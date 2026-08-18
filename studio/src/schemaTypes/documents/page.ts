@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {DocumentIcon} from '@sanity/icons'
+import {File} from 'lucide-react'
 
 /**
  * Page schema.  Define and edit the fields for the 'page' content type.
@@ -10,7 +10,7 @@ export const page = defineType({
   name: 'page',
   title: 'Page',
   type: 'document',
-  icon: DocumentIcon,
+  icon: File,
   fields: [
     defineField({
       name: 'name',

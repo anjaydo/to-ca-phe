@@ -1,4 +1,4 @@
-import {CogIcon} from '@sanity/icons'
+import {Settings as SettingsIcon} from 'lucide-react'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import type {Link, Settings} from '../../../sanity.types'
 
@@ -13,7 +13,7 @@ export const settings = defineType({
   name: 'settings',
   title: 'Settings',
   type: 'document',
-  icon: CogIcon,
+  icon: SettingsIcon,
   fields: [
     defineField({
       name: 'title',

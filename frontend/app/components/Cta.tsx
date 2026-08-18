@@ -17,11 +17,11 @@ type CtaProps = {
 export default function CTA({block}: CtaProps) {
   const {heading, eyebrow, body = [], button, image, theme, contentAlignment} = block
 
-  const isDark = theme === 'dark'
+  const isDark = stegaClean(theme) === 'dark'
   const isImageFirst = stegaClean(contentAlignment) === 'imageFirst'
 
   return (
-    <section className={isDark ? 'relative dark dark:bg-black' : 'relative dark:bg-black'}>
+    <section className={isDark ? 'relative dark bg-surface text-on-surface' : 'relative bg-surface text-on-surface'}>
       <div className="absolute inset-0 bg-size-[5px] bg-[url(/images/tile-1-black.png)] dark:bg-[url(/images/tile-1-white.png)] opacity-25" />
       <div className="container relative">
         <div className="grid lg:grid-cols-2 gap-12 py-12">
@@ -29,16 +29,16 @@ export default function CTA({block}: CtaProps) {
             className={`${isImageFirst && image ? 'row-start-2 lg:row-start-1 lg:col-start-2' : ''} flex flex-col gap-2 `}
           >
             {eyebrow && (
-              <span className="text-sm uppercase dark:text-white font-mono tracking-tight opacity-70">
+              <span className="font-mono text-sm uppercase tracking-tight text-on-surface-variant">
                 {eyebrow}
               </span>
             )}
             {heading && (
-              <h2 className="text-2xl md:text-3xl lg:text-4xl dark:text-white">{heading}</h2>
+              <h2 className="text-2xl text-primary md:text-3xl lg:text-4xl">{heading}</h2>
             )}
             {body && (
               <div className="lg:text-left">
-                <PortableText value={body as PortableTextBlock[]} className="dark:prose-invert" />
+                <PortableText value={body as PortableTextBlock[]} />
               </div>
             )}
 
@@ -46,7 +46,7 @@ export default function CTA({block}: CtaProps) {
               <div className="flex mt-4">
                 <ResolvedLink
                   link={button?.link}
-                  className="rounded-full flex gap-2 font-mono text-sm whitespace-nowrap items-center bg-black dark:bg-white hover:bg-blue focus:bg-blue py-3 px-6 text-white dark:text-black dark:hover:text-white transition-colors duration-200"
+                  className="inline-flex items-center gap-2 whitespace-nowrap rounded-lg bg-tertiary-container px-6 py-3 font-mono text-sm text-on-tertiary-container transition hover:brightness-110 focus:brightness-110"
                 >
                   {button?.buttonText}
                 </ResolvedLink>

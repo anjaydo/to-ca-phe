@@ -9,6 +9,7 @@
  */
 
 import {PortableText, type PortableTextComponents, type PortableTextBlock} from 'next-sanity'
+import {Link as LinkIcon} from 'lucide-react'
 import ResolvedLink from '@/app/components/ResolvedLink'
 import Image from '@/app/components/SanityImage'
 
@@ -49,20 +50,7 @@ export default function CustomPortableText({
             href={`#${value?._key}`}
             className="absolute left-0 top-0 bottom-0 -ml-6 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-              />
-            </svg>
+            <LinkIcon aria-hidden="true" className="size-4" />
           </a>
         </h1>
       ),
@@ -75,20 +63,7 @@ export default function CustomPortableText({
               href={`#${value?._key}`}
               className="absolute left-0 top-0 bottom-0 -ml-6 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                />
-              </svg>
+              <LinkIcon aria-hidden="true" className="size-4" />
             </a>
           </h2>
         )
@@ -102,7 +77,9 @@ export default function CustomPortableText({
   }
 
   return (
-    <div className={`prose-a:text-brand prose dark:prose-invert ${className}`}>
+    <div
+      className={`prose prose-headings:text-primary prose-p:text-on-surface-variant prose-a:text-primary prose-strong:text-on-surface prose-li:text-on-surface-variant ${className ?? ''}`}
+    >
       <PortableText components={components} value={value} />
     </div>
   )

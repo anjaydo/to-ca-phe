@@ -1,53 +1,111 @@
 ---
 name: Organic Editorial
-colors:
-  surface: '#faf9f4'
-  surface-dim: '#dbdad5'
-  surface-bright: '#faf9f4'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f5f4ef'
-  surface-container: '#efeee9'
-  surface-container-high: '#e9e8e3'
-  surface-container-highest: '#e3e3de'
-  on-surface: '#1b1c19'
-  on-surface-variant: '#404941'
-  inverse-surface: '#30312e'
-  inverse-on-surface: '#f2f1ec'
-  outline: '#707970'
-  outline-variant: '#c0c9bf'
-  surface-tint: '#296a42'
-  primary: '#004523'
-  on-primary: '#ffffff'
-  primary-container: '#1b5e37'
-  on-primary-container: '#92d5a4'
-  inverse-primary: '#92d6a4'
-  secondary: '#416900'
-  on-secondary: '#ffffff'
-  secondary-container: '#acf847'
-  on-secondary-container: '#457000'
-  tertiary: '#563400'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#754900'
-  on-tertiary-container: '#ffb95f'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#aef2bf'
-  primary-fixed-dim: '#92d6a4'
-  on-primary-fixed: '#00210e'
-  on-primary-fixed-variant: '#09522c'
-  secondary-fixed: '#acf847'
-  secondary-fixed-dim: '#91db2a'
-  on-secondary-fixed: '#102000'
-  on-secondary-fixed-variant: '#304f00'
-  tertiary-fixed: '#ffddb8'
-  tertiary-fixed-dim: '#ffb95f'
-  on-tertiary-fixed: '#2a1700'
-  on-tertiary-fixed-variant: '#653e00'
-  background: '#faf9f4'
-  on-background: '#1b1c19'
-  surface-variant: '#e3e3de'
+brand-colors:
+  forest: '#154734'
+  cream: '#faf8f5'
+  orange: '#ee7b17'
+  mustard: '#f5b800'
+  matcha: '#4e8a42'
+  charcoal: '#1a1a1a'
+modes:
+  light:
+    colors:
+      surface: '#faf8f5'
+      surface-dim: '#ddd8d2'
+      surface-bright: '#faf8f5'
+      surface-container-lowest: '#ffffff'
+      surface-container-low: '#f6f1eb'
+      surface-container: '#efe8e0'
+      surface-container-high: '#e8ded4'
+      surface-container-highest: '#e1d4c8'
+      on-surface: '#1a1a1a'
+      on-surface-variant: '#46413c'
+      inverse-surface: '#23392f'
+      inverse-on-surface: '#faf8f5'
+      outline: '#716a63'
+      outline-variant: '#c8beb4'
+      surface-tint: '#154734'
+      primary: '#154734'
+      on-primary: '#faf8f5'
+      primary-container: '#d5e8dc'
+      on-primary-container: '#0b3324'
+      inverse-primary: '#a8d1b4'
+      secondary: '#765900'
+      on-secondary: '#faf8f5'
+      secondary-container: '#f5b800'
+      on-secondary-container: '#1a1a1a'
+      tertiary: '#9a4000'
+      on-tertiary: '#ffffff'
+      tertiary-container: '#ee7b17'
+      on-tertiary-container: '#1a1a1a'
+      error: '#ba1a1a'
+      on-error: '#ffffff'
+      error-container: '#ffdad6'
+      on-error-container: '#93000a'
+      primary-fixed: '#d5e8dc'
+      primary-fixed-dim: '#a8d1b4'
+      on-primary-fixed: '#09261a'
+      on-primary-fixed-variant: '#154734'
+      secondary-fixed: '#f5b800'
+      secondary-fixed-dim: '#d9a400'
+      on-secondary-fixed: '#1a1a1a'
+      on-secondary-fixed-variant: '#493600'
+      tertiary-fixed: '#ffd9bd'
+      tertiary-fixed-dim: '#ffad67'
+      on-tertiary-fixed: '#321400'
+      on-tertiary-fixed-variant: '#7d3300'
+      background: '#faf8f5'
+      on-background: '#1a1a1a'
+      surface-variant: '#e1d4c8'
+  dark:
+    colors:
+      surface: '#0c2119'
+      surface-dim: '#061610'
+      surface-bright: '#244d3c'
+      surface-container-lowest: '#061610'
+      surface-container-low: '#0f2b20'
+      surface-container: '#123626'
+      surface-container-high: '#154734'
+      surface-container-highest: '#1d5741'
+      on-surface: '#faf8f5'
+      on-surface-variant: '#d5cdc4'
+      inverse-surface: '#faf8f5'
+      inverse-on-surface: '#1a1a1a'
+      outline: '#a69d94'
+      outline-variant: '#466153'
+      surface-tint: '#a8d1b4'
+      primary: '#b8ddc2'
+      on-primary: '#0b3324'
+      primary-container: '#154734'
+      on-primary-container: '#d5e8dc'
+      inverse-primary: '#154734'
+      secondary: '#ffd35a'
+      on-secondary: '#1a1a1a'
+      secondary-container: '#f5b800'
+      on-secondary-container: '#1a1a1a'
+      tertiary: '#ffad67'
+      on-tertiary: '#4a1f00'
+      tertiary-container: '#ee7b17'
+      on-tertiary-container: '#1a1a1a'
+      error: '#ffb4ab'
+      on-error: '#690005'
+      error-container: '#93000a'
+      on-error-container: '#ffdad6'
+      primary-fixed: '#d5e8dc'
+      primary-fixed-dim: '#a8d1b4'
+      on-primary-fixed: '#09261a'
+      on-primary-fixed-variant: '#154734'
+      secondary-fixed: '#f5b800'
+      secondary-fixed-dim: '#d9a400'
+      on-secondary-fixed: '#1a1a1a'
+      on-secondary-fixed-variant: '#493600'
+      tertiary-fixed: '#ffd9bd'
+      tertiary-fixed-dim: '#ffad67'
+      on-tertiary-fixed: '#321400'
+      on-tertiary-fixed-variant: '#7d3300'
+      background: '#0c2119'
+      on-background: '#faf8f5'
+      surface-variant: '#1d5741'
 typography:
   display-lg:
     fontFamily: Be Vietnam Pro
@@ -111,12 +169,20 @@ The visual style is characterized by:
 
 ## Colors
 
-The palette is derived directly from the deep forest greens of premium matcha and the vibrant, sun-drenched chartreuse of fresh sprouts.
+The semantic palette is derived from the Tổ Cà Phê reference colors rather than copying every swatch directly into UI roles. Brand colors remain available as `brand-*` Tailwind utilities; accessible derived tones are used where the original swatch does not provide sufficient contrast.
 
-- **Primary (Forest Matcha):** A deep, authoritative green used for headings and primary brand containers.
-- **Secondary (Vibrant Chartreuse):** Used sparingly for high-action highlights and organic accents.
-- **Tertiary (Warm Ochre):** A secondary accent pulled from the character illustrations, used for functional alerts or specific status indicators.
-- **Neutral (Parchment):** An off-white, warm-toned background that mimics high-quality paper stock, reducing the clinical feel of pure white.
+### Color modes
+
+- **Light mode (default):** Uses warm Parchment surfaces with Forest Matcha text and actions. This is the canonical daytime/editorial presentation.
+- **Dark mode:** Uses Midnight green tonal surfaces while preserving the same semantic token names. Components must never choose colors by mode; they consume semantic tokens and inherit the active values.
+- **Fixed colors:** `primary-fixed`, `secondary-fixed`, and `tertiary-fixed` do not change between modes. Reserve them for artwork, image overlays, and content that must retain a stable brand color.
+- **Theme behavior:** Follow the operating-system preference until the visitor explicitly selects light or dark. Persist the explicit preference locally.
+
+- **Primary (Deep Forest Green):** `#154734` in light mode. Use for headings, logo treatment, outlines, and structural brand containers. Dark mode uses a lighter derived green for readable text while retaining Deep Forest on containers.
+- **CTA (Warm Orange):** `#EE7B17` with Charcoal text. Do not place Cream or white text on the original Orange because that pairing does not meet normal-text contrast.
+- **Highlight (Mustard Yellow):** `#F5B800` with Charcoal text. Use for badges, marquees, notification tags, stars, and limited graphic emphasis.
+- **Matcha:** `#4E8A42` is reserved for product-specific fills, progress indicators, illustration, and large non-text graphics. It must not be used for normal text on Cream.
+- **Neutral:** Cream `#FAF8F5` and Charcoal `#1A1A1A` form the main reading pair. Tonal surfaces are warm derivatives of Cream in light mode and Deep Forest in dark mode.
 
 Use the Primary color for text to maintain a softer contrast than pure black.
 
@@ -128,7 +194,7 @@ The typography strategy focuses on a blend of modern Vietnamese-inspired sans-se
 - **Body (Work Sans):** Professional and highly legible. It provides a grounded feel to longer descriptive text.
 - **Labels (JetBrains Mono):** Used for metadata, status tags, and micro-copy. The technical nature of the mono font creates a "stamp" or "printed" effect against the organic background.
 
-Always prefer "Forest Matcha" (#1B5E37) for text color instead of #000000 to maintain the organic narrative.
+Always use semantic `primary`, `on-surface`, and `on-surface-variant` tokens for text instead of black or mode-specific color literals.
 
 ## Layout & Spacing
 
@@ -143,7 +209,7 @@ The layout follows a **Fluid Grid** model with a heavy editorial influence.
 
 This system avoids heavy shadows in favor of **Tonal Layers** and **Crisp Outlines**.
 
-- **Layering:** Depth is communicated through color blocking. Use "Parchment" as the base and "Forest Matcha" for raised components or primary actions.
+- **Layering:** Depth is communicated through color blocking. Use Cream as the light base, Deep Forest tonal layers in dark mode, and Warm Orange only for high-priority actions.
 - **Outlines:** To separate elements of the same color, use a 1px solid border in a slightly darker or lighter shade of the background (e.g., a subtle stroke on Parchment cards).
 - **Shadows:** If depth is absolutely necessary, use a "Hard Shadow" (0px blur) in the Primary color at 2px-4px offset to mimic the 3D-effect seen in the brand's logo.
 
@@ -157,9 +223,9 @@ The shape language is **Rounded**, reflecting the soft nature of matcha foam and
 
 ## Components
 
-- **Buttons:** Primary buttons use a solid Forest Matcha background with Parchment text. Secondary buttons use a Parchment background with a 2px Forest Matcha border.
-- **Chips/Badges:** Use JetBrains Mono for text. Backgrounds should be the Secondary Chartreuse with a high-contrast dark green border for visibility.
+- **Buttons:** Primary CTA buttons use Warm Orange with Charcoal text. Secondary buttons use a surface background with a 2px semantic Primary border.
+- **Chips/Badges:** Use JetBrains Mono with Mustard Yellow and Charcoal text. Avoid white text on Orange or Mustard.
 - **Cards:** Cards should be flat with a 1px Forest Matcha border or a subtle Tonal Layer. Use generous internal padding (24px).
 - **Input Fields:** Use a Parchment background with a 1px border. When focused, the border should thicken to 2px in Forest Matcha.
 - **Lists:** Use custom icons or the brand's cat illustrations as bullet points to enhance the "Modern Organic" narrative.
-- **Status Indicators:** Use the Tertiary Ochre for warnings and the Secondary Chartreuse for success messages.
+- **Status Indicators:** Use Orange for warnings/attention, Matcha for non-text success indicators, and semantic error tokens for destructive or failed states.

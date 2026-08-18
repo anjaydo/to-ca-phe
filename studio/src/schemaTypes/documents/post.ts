@@ -1,4 +1,4 @@
-import {DocumentTextIcon} from '@sanity/icons'
+import {FileText} from 'lucide-react'
 import {format, parseISO} from 'date-fns'
 import {defineField, defineType} from 'sanity'
 import type {Post} from '../../../sanity.types'
@@ -11,7 +11,7 @@ import type {Post} from '../../../sanity.types'
 export const post = defineType({
   name: 'post',
   title: 'Post',
-  icon: DocumentTextIcon,
+  icon: FileText,
   type: 'document',
   fields: [
     defineField({

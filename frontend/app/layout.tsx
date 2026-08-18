@@ -10,6 +10,7 @@ import {Toaster} from 'sonner'
 import DraftModeToast from '@/app/components/DraftModeToast'
 import Footer from '@/app/components/Footer'
 import Header from '@/app/components/Header'
+import ThemeToggle from '@/app/components/ThemeToggle'
 import {SanityLive} from '@/sanity/lib/live'
 import {handleError} from '@/app/client-utils'
 
@@ -22,20 +23,20 @@ export const metadata: Metadata = {
 }
 
 const beVietnamPro = Be_Vietnam_Pro({
-  variable: '--font-display',
+  variable: '--font-be-vietnam-pro',
   weight: ['400', '600', '700', '800'],
   subsets: ['latin', 'vietnamese'],
   display: 'swap',
 })
 
 const workSans = Work_Sans({
-  variable: '--font-body',
+  variable: '--font-work-sans',
   subsets: ['latin', 'vietnamese'],
   display: 'swap',
 })
 
 const jetBrainsMono = JetBrains_Mono({
-  variable: '--font-label',
+  variable: '--font-jetbrains-mono',
   subsets: ['latin'],
   display: 'swap',
 })
@@ -44,7 +45,19 @@ export default async function RootLayout({children}: LayoutProps<'/'>) {
   const {isEnabled: isDraftMode} = await draftMode()
 
   return (
-    <html lang="vi" className={`${beVietnamPro.variable} ${workSans.variable} ${jetBrainsMono.variable}`}>
+    <html
+      lang="vi"
+      suppressHydrationWarning
+      data-theme="system"
+      className={`${beVietnamPro.variable} ${workSans.variable} ${jetBrainsMono.variable}`}
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var p=t==='light'||t==='dark'?t:'system';var d=p==='dark'||(p==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.dataset.theme=p}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body>
         <section className="min-h-screen">
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
@@ -58,7 +71,7 @@ export default async function RootLayout({children}: LayoutProps<'/'>) {
           )}
           {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
           <SanityLive onError={handleError} />
-          <Header />
+          <Header themeToggle={<ThemeToggle />} />
           <main className="">{children}</main>
           <Footer />
         </section>

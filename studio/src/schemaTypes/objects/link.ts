@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {LinkIcon} from '@sanity/icons'
+import {Link as LinkIcon} from 'lucide-react'
 import type {Link} from '../../../sanity.types'
 
 /**

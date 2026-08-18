@@ -50,18 +50,18 @@ const menuGroups = [
 export default function MenuPage() {
   return (
     <div>
-      <PageHero eyebrow="Drink slowly / Stay awhile" title="Our Menu" description="A curated selection of specialty drinks and pastries, blending Vietnamese roots with an electric, modern energy." aside={<span className="eyebrow rounded-full bg-[#d2f954] px-4 py-2 text-[#0a1f12]">Season 08 · 2026</span>} />
+      <PageHero eyebrow="Drink slowly / Stay awhile" title="Our Menu" description="A curated selection of specialty drinks and pastries, blending Vietnamese roots with an electric, modern energy." aside={<span className="eyebrow rounded-full bg-secondary-container px-4 py-2 text-on-secondary-container">Season 08 · 2026</span>} />
 
       <main>
         <section className="site-container py-16 md:py-24">
           <div className="mb-10 flex flex-wrap gap-2">
             {['All', 'Specialty Matcha', 'Vietnamese Coffee', 'Refreshing Tea', 'Pastries'].map((item, index) => (
-              <span key={item} className={`eyebrow rounded-full border px-4 py-2 ${index === 0 ? 'border-[#d2f954] bg-[#d2f954] text-[#0a1f12]' : 'border-white/15 text-[#b9c2b9]'}`}>{item}</span>
+              <span key={item} className={`eyebrow rounded-full border px-4 py-2 ${index === 0 ? 'border-secondary-container bg-secondary-container text-on-secondary-container' : 'border-outline-variant text-on-surface-variant'}`}>{item}</span>
             ))}
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
             {drinks.map((drink, index) => (
-              <article key={drink.name} className={`group overflow-hidden rounded-xl border border-white/10 bg-[#1a2e21] ${index === 0 ? 'lg:col-span-2 lg:grid lg:grid-cols-2' : ''}`}>
+              <article key={drink.name} className={`group overflow-hidden rounded-xl border border-outline-variant bg-surface-container-highest ${index === 0 ? 'lg:col-span-2 lg:grid lg:grid-cols-2' : ''}`}>
                 <div className={`relative min-h-80 overflow-hidden ${index === 0 ? 'lg:min-h-[500px]' : ''}`}>
                   {drink.image ? (
                     <Image src={drink.image} alt={drink.name} fill sizes={index === 0 ? '(min-width: 1024px) 35vw, 100vw' : '(min-width: 1024px) 33vw, 100vw'} className="object-cover transition duration-700 group-hover:scale-105" />
@@ -72,27 +72,27 @@ export default function MenuPage() {
                   )}
                 </div>
                 <div className="flex min-h-56 flex-col justify-between p-7">
-                  <div><p className="eyebrow text-[#d2f954]">{drink.category}</p><h2 className="mt-3 text-2xl font-bold md:text-3xl">{drink.name}</h2><p className="mt-3 leading-7 text-[#b9c2b9]">{drink.description}</p></div>
-                  <div className="mt-7 flex items-center justify-between"><span className="text-xl font-bold text-[#d2f954]">{drink.price}</span><span className="grid size-11 place-items-center rounded-full bg-[#d2f954] text-xl text-[#0a1f12] transition group-hover:rotate-45">＋</span></div>
+                  <div><p className="eyebrow text-primary">{drink.category}</p><h2 className="mt-3 text-2xl font-bold text-primary md:text-3xl">{drink.name}</h2><p className="mt-3 leading-7 text-on-surface-variant">{drink.description}</p></div>
+                  <div className="mt-7 flex items-center justify-between"><span className="text-xl font-bold text-primary">{drink.price}</span><span className="grid size-11 place-items-center rounded-full bg-secondary-container text-xl text-on-secondary-container transition group-hover:rotate-45">＋</span></div>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="border-y border-white/10 bg-[#08190e] py-20 md:py-28">
+        <section className="border-y border-outline-variant bg-surface-container-low py-20 md:py-28">
           <div className="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
             <div>
-              <p className="eyebrow text-[#d2f954]">Full selection</p>
+              <p className="eyebrow text-primary">Full selection</p>
               <h2 className="section-title mt-4">Pick your energy.</h2>
-              <p className="mt-6 max-w-md leading-7 text-[#b9c2b9]">Mỗi món được pha khi bạn gọi. Hãy nói với barista về độ ngọt, loại sữa hoặc nhịp năng lượng bạn cần hôm nay.</p>
+              <p className="mt-6 max-w-md leading-7 text-on-surface-variant">Mỗi món được pha khi bạn gọi. Hãy nói với barista về độ ngọt, loại sữa hoặc nhịp năng lượng bạn cần hôm nay.</p>
             </div>
-            <div className="divide-y divide-white/10 border-y border-white/10">
+            <div className="divide-y divide-outline-variant border-y border-outline-variant">
               {menuGroups.map((group) => (
                 <div key={group.title} className="py-7">
-                  <h3 className="text-xl font-bold text-[#d2f954]">{group.title}</h3>
+                  <h3 className="text-xl font-bold text-primary">{group.title}</h3>
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                    {group.items.map(([name, price]) => <div key={name} className="flex justify-between gap-4 text-sm"><span>{name}</span><span className="font-semibold text-[#b9c2b9]">{price}</span></div>)}
+                    {group.items.map(([name, price]) => <div key={name} className="flex justify-between gap-4 text-sm"><span>{name}</span><span className="font-semibold text-on-surface-variant">{price}</span></div>)}
                   </div>
                 </div>
               ))}
@@ -101,8 +101,8 @@ export default function MenuPage() {
         </section>
 
         <section className="site-container py-20 md:py-28">
-          <div className="grid overflow-hidden rounded-xl border border-white/10 lg:grid-cols-2">
-            <div className="flex flex-col justify-center bg-[#d2f954] p-8 text-[#0a1f12] md:p-12">
+          <div className="grid overflow-hidden rounded-xl border border-outline-variant lg:grid-cols-2">
+            <div className="flex flex-col justify-center bg-secondary-container p-8 text-on-secondary-container md:p-12">
               <p className="eyebrow">Rooted in origin</p>
               <h2 className="mt-4 text-4xl font-extrabold tracking-tight md:text-6xl">From Uji<br />to Cầu Đất.</h2>
               <p className="mt-6 max-w-lg leading-7">Matcha từ những nông trại lâu đời ở Uji, Arabica từ cao nguyên sương mù Cầu Đất. Hai nguồn gốc, cùng một sự tôn trọng dành cho nguyên liệu.</p>

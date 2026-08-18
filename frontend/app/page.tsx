@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import {ArrowUpRight, Sparkles} from 'lucide-react'
 
 const locations = [
   {
@@ -31,28 +32,31 @@ const events = [
     date: '23.08',
     title: 'Acoustic Night',
     description: 'Cozy live music under the stars.',
-    image: 'https://images.unsplash.com/photo-1514525253361-bee8718a74a2?auto=format&fit=crop&q=85&w=900',
+    image:
+      'https://images.unsplash.com/photo-1514525253361-bee8718a74a2?auto=format&fit=crop&q=85&w=900',
   },
   {
     category: 'Workshop',
     date: '30.08',
     title: 'Workshop Làm Gốm',
     description: 'Shape, glaze, and take home your own cup.',
-    image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=85&w=900',
+    image:
+      'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=85&w=900',
   },
   {
     category: 'Talkshow',
     date: '06.09',
     title: 'Talkshow Sáng Tạo',
     description: 'Creative discussions with local artists.',
-    image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=85&w=900',
+    image:
+      'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=85&w=900',
   },
 ]
 
 export default function Page() {
   return (
     <div className="overflow-hidden">
-      <header className="hero relative flex min-h-[680px] items-center justify-center overflow-hidden border-b border-[#d2f954]/50 px-5 py-24 md:min-h-[calc(100svh-81px)]">
+      <header className="hero relative flex min-h-[680px] items-center justify-center overflow-hidden border-b border-primary/50 px-5 py-24 md:min-h-[calc(100svh-81px)]">
         <Image
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5gyxZaBhpYeDrXeKidP4fBAuFZmqsDL-ugkXdAcc_PsdLmZE9GF6t--zpODCsc6XgY6TNJ1c38OzYXq2tV7CXWSNiidmWWasItQozT5Z5bjjumsRwQkiVFc-kEcjsqFH6hMd-DnfvhLwqXStGZS4JgZ1gRETCFoYtJ7e318RgxQN2h2_Q_Sm56ENITbGhs4Q1HrXR5tHrIHlYRH8CW83GrC8gqu8OHQ8H5Jty6D4lZGj9UP4JYbuCdQ"
           alt="Không gian làm việc và cà phê tại Tổ"
@@ -63,23 +67,24 @@ export default function Page() {
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,31,18,.55),rgba(10,31,18,.8))]" />
         <div className="grain absolute inset-0 opacity-25" />
-        <div className="hero-orbit absolute left-[7%] top-[17%] hidden size-32 rounded-full border border-[#d2f954]/50 lg:block" />
-        <div className="hero-orbit absolute bottom-[12%] right-[8%] hidden size-20 rounded-full border border-[#faf9f4]/40 lg:block" />
+        <div className="hero-orbit absolute left-[7%] top-[17%] hidden size-32 rounded-full border border-secondary-fixed/50 lg:block" />
+        <div className="hero-orbit absolute bottom-[12%] right-[8%] hidden size-20 rounded-full border border-primary-fixed/40 lg:block" />
 
         <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
-          <span className="eyebrow mb-7 rounded-full border border-[#d2f954]/50 bg-[#0a1f12]/75 px-4 py-2 text-[#d2f954] backdrop-blur-sm">
+          <span className="eyebrow mb-7 rounded-full border border-secondary-fixed/50 bg-on-primary-fixed/75 px-4 py-2 text-secondary-fixed backdrop-blur-sm">
             Coffee · Matcha · Community
           </span>
-          <h1 className="max-w-5xl text-[clamp(3.2rem,8vw,7rem)] font-extrabold leading-[.94] tracking-[-.055em] text-[#faf9f4]">
+          <h1 className="max-w-5xl text-[clamp(3.2rem,8vw,7rem)] font-extrabold leading-[.94] tracking-[-.055em] text-primary-fixed">
             Trạm Dừng
-            <span className="block text-[#d2f954]">Sáng Tạo.</span>
+            <span className="block text-secondary-fixed">Sáng Tạo.</span>
           </h1>
-          <p className="mt-7 max-w-2xl text-base leading-7 text-[#d8ded7] md:text-xl md:leading-8">
-            Một không gian cho những ý tưởng mới, những cuộc trò chuyện hay và những ly cà phê thật tử tế giữa lòng Đà Nẵng.
+          <p className="mt-7 max-w-2xl text-base leading-7 text-primary-fixed-dim md:text-xl md:leading-8">
+            Một không gian cho những ý tưởng mới, những cuộc trò chuyện hay và những ly cà phê thật
+            tử tế giữa lòng Đà Nẵng.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link href="/menu" className="button-primary">
-              Explore menu <span aria-hidden="true">↗</span>
+              Explore menu <ArrowUpRight aria-hidden="true" className="size-4" />
             </Link>
             <Link href="/spaces" className="button-secondary">
               Find your Tổ
@@ -88,11 +93,14 @@ export default function Page() {
         </div>
       </header>
 
-      <div className="marquee border-b border-[#d2f954]/25 bg-[#d2f954] py-3 text-[#0a1f12]">
+      <div className="marquee border-b border-secondary-container/25 bg-secondary-container py-3 text-on-secondary-container">
         <div className="marquee-track eyebrow flex w-max gap-10 whitespace-nowrap">
           {[0, 1].map((group) => (
             <div className="flex gap-10" key={group} aria-hidden={group === 1}>
-              <span>✦ Now open at 357 Nguyễn Tất Thành</span>
+              <span className="inline-flex items-center gap-2">
+                <Sparkles aria-hidden="true" className="size-3.5" /> Now open at 357 Nguyễn Tất
+                Thành
+              </span>
               <span>Open 24/7</span>
               <span>Chăm học chăm làm</span>
               <span>Specialty coffee & matcha</span>
@@ -105,10 +113,16 @@ export default function Page() {
         <section id="menu" className="site-container scroll-mt-28 py-20 md:py-28">
           <div className="mb-10 flex items-end justify-between gap-6">
             <div>
-              <span className="eyebrow text-[#d2f954]">01 / Signature</span>
-              <h2 className="section-title mt-3">A little ritual,<br />made at Tổ.</h2>
+              <span className="eyebrow text-primary">01 / Signature</span>
+              <h2 className="section-title mt-3">
+                A little ritual,
+                <br />
+                made at Tổ.
+              </h2>
             </div>
-            <Link href="/menu" className="text-link hidden sm:inline-flex">View full menu ↗</Link>
+            <Link href="/menu" className="text-link hidden items-center gap-1.5 sm:inline-flex">
+              View full menu <ArrowUpRight aria-hidden="true" className="size-4" />
+            </Link>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-12">
@@ -122,26 +136,35 @@ export default function Page() {
               />
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,31,18,.95)_0%,rgba(10,31,18,.7)_45%,rgba(10,31,18,.08)_100%)]" />
               <div className="relative flex h-full max-w-md flex-col items-start justify-end">
-                <span className="eyebrow rounded-full bg-[#d2f954] px-3 py-1.5 text-[#0a1f12]">Signature</span>
-                <h3 className="mt-5 text-3xl font-bold tracking-tight text-[#faf9f4] sm:text-4xl">Uji Matcha Cloud</h3>
-                <p className="mt-3 leading-7 text-[#c3c8c1]">Ceremonial Uji matcha crowned with our sea-salt cream cloud. Earthy, bright, and quietly addictive.</p>
-                <p className="mt-6 text-xl font-semibold text-[#d2f954]">65,000 VND</p>
+                <span className="eyebrow rounded-full bg-secondary-fixed px-3 py-1.5 text-on-secondary-fixed">
+                  Signature
+                </span>
+                <h3 className="mt-5 text-3xl font-bold tracking-tight text-primary-fixed sm:text-4xl">
+                  Uji Matcha Cloud
+                </h3>
+                <p className="mt-3 leading-7 text-primary-fixed-dim">
+                  Ceremonial Uji matcha crowned with our sea-salt cream cloud. Earthy, bright, and
+                  quietly addictive.
+                </p>
+                <p className="mt-6 text-xl font-semibold text-secondary-fixed">65,000 VND</p>
               </div>
             </article>
 
             <div className="grid gap-4 lg:col-span-4">
               <article className="bento-card flex min-h-64 flex-col justify-between p-7">
                 <div className="flex items-start justify-between">
-                  <span className="eyebrow text-[#d2f954]">Slow bar</span>
-                  <span className="text-3xl text-[#d2f954]">✦</span>
+                  <span className="eyebrow text-primary">Slow bar</span>
+                  <Sparkles aria-hidden="true" className="size-7 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#faf9f4]">Cầu Đất Brown</h3>
-                  <p className="mt-2 text-[#c3c8c1]">Seasonal pour-over with notes of cacao and ripe plum.</p>
-                  <p className="mt-4 font-semibold text-[#d2f954]">55,000 VND</p>
+                  <h3 className="text-2xl font-bold text-primary">Cầu Đất Brown</h3>
+                  <p className="mt-2 text-on-surface-variant">
+                    Seasonal pour-over with notes of cacao and ripe plum.
+                  </p>
+                  <p className="mt-4 font-semibold text-primary">55,000 VND</p>
                 </div>
               </article>
-              <article className="relative min-h-64 overflow-hidden rounded-lg border border-white/10">
+              <article className="relative min-h-64 overflow-hidden rounded-lg border border-outline-variant">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuD93fMMk-ou32IatEDan-EFqI3g7blpQxeFiFX3BFeiP8wBk28HA7--9VmvXmuwUtduLhmdkc_fbP6OTOQ-4b_SzQk64iuCoi2ogLWtnQpgIbVz6Xh4xKRFdHPXqB3Cge_0GK6OUt_T8HE8hXmddzwj_OUb5XNdG_78AgCzNiyf3xsL6is211sFthfjmbGKgLBdDG4aM9g6hiZhY--5zTAKQhk5F94UywspuSqjCtfvjWvH8-qBhzIFNnC_gnp3F6XDaZk"
                   alt="Seasonal drink at Tổ Cà Phê"
@@ -149,8 +172,8 @@ export default function Page() {
                   sizes="(min-width: 1024px) 33vw, 100vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-[#d2f954]/75 mix-blend-multiply" />
-                <div className="relative flex h-full flex-col justify-end p-7 text-[#faf9f4]">
+                <div className="absolute inset-0 bg-secondary-fixed/75 mix-blend-multiply" />
+                <div className="relative flex h-full flex-col justify-end p-7 text-primary-fixed">
                   <span className="eyebrow">New arrival</span>
                   <h3 className="mt-2 text-2xl font-bold">Lychee Blossom Tea</h3>
                 </div>
@@ -159,26 +182,44 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="spaces" className="scroll-mt-28 border-y border-white/10 bg-[#08190e] py-20 md:py-28">
+        <section
+          id="spaces"
+          className="scroll-mt-28 border-y border-outline-variant bg-surface-container-low py-20 md:py-28"
+        >
           <div className="site-container">
             <div className="mb-10 flex items-end justify-between gap-6">
               <div>
-                <span className="eyebrow text-[#d2f954]">02 / Our spaces</span>
+                <span className="eyebrow text-primary">02 / Our spaces</span>
                 <h2 className="section-title mt-3">Find your corner.</h2>
               </div>
-              <p className="hidden max-w-sm text-right leading-7 text-[#aeb7ae] md:block">Three addresses. Three different rhythms. One shared home for good work and better pauses.</p>
+              <p className="hidden max-w-sm text-right leading-7 text-on-surface-variant md:block">
+                Three addresses. Three different rhythms. One shared home for good work and better
+                pauses.
+              </p>
             </div>
             <div className="grid gap-5 md:grid-cols-3">
               {locations.map((location, index) => (
                 <article key={location.name} className="group">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10">
-                    <Image src={location.image} alt={`Tổ Cà Phê ${location.name}`} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-outline-variant">
+                    <Image
+                      src={location.image}
+                      alt={`Tổ Cà Phê ${location.name}`}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#07170c] via-transparent to-transparent" />
-                    <span className="eyebrow absolute left-5 top-5 rounded-full border border-white/25 bg-[#0a1f12]/70 px-3 py-1.5 backdrop-blur-sm">0{index + 1}</span>
+                    <span className="eyebrow absolute left-5 top-5 rounded-full border border-primary-fixed/25 bg-on-primary-fixed/70 px-3 py-1.5 text-primary-fixed backdrop-blur-sm">
+                      0{index + 1}
+                    </span>
                     <div className="absolute inset-x-0 bottom-0 p-6">
-                      <span className="eyebrow text-[#d2f954]">{location.hours}</span>
-                      <h3 className="mt-2 text-2xl font-bold text-[#faf9f4]">{location.name}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#c3c8c1]">{location.description}</p>
+                      <span className="eyebrow text-secondary-fixed">{location.hours}</span>
+                      <h3 className="mt-2 text-2xl font-bold text-primary-fixed">
+                        {location.name}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-primary-fixed-dim">
+                        {location.description}
+                      </p>
                     </div>
                   </div>
                 </article>
@@ -190,37 +231,59 @@ export default function Page() {
         <section id="events" className="site-container scroll-mt-28 py-20 md:py-28">
           <div className="mb-10 flex items-end justify-between gap-6">
             <div>
-              <span className="eyebrow text-[#d2f954]">03 / Community</span>
+              <span className="eyebrow text-primary">03 / Community</span>
               <h2 className="section-title mt-3">Sự Kiện Tại Tổ.</h2>
             </div>
-            <Link href="#events" className="text-link hidden sm:inline-flex">View all events ↗</Link>
+            <Link href="#events" className="text-link hidden items-center gap-1.5 sm:inline-flex">
+              View all events <ArrowUpRight aria-hidden="true" className="size-4" />
+            </Link>
           </div>
-          <div className="divide-y divide-white/10 border-y border-white/10">
+          <div className="divide-y divide-outline-variant border-y border-outline-variant">
             {events.map((event) => (
-              <article key={event.title} className="event-row group grid items-center gap-5 py-5 md:grid-cols-[100px_1fr_220px] md:py-7">
+              <article
+                key={event.title}
+                className="event-row group grid items-center gap-5 py-5 md:grid-cols-[100px_1fr_220px] md:py-7"
+              >
                 <div>
-                  <span className="eyebrow text-[#d2f954]">{event.category}</span>
+                  <span className="eyebrow text-primary">{event.category}</span>
                   <p className="mt-1 text-xl font-semibold">{event.date}</p>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold transition-colors group-hover:text-[#d2f954] md:text-3xl">{event.title}</h3>
-                  <p className="mt-2 text-[#aeb7ae]">{event.description}</p>
+                  <h3 className="text-2xl font-bold text-primary transition-colors group-hover:text-secondary md:text-3xl">
+                    {event.title}
+                  </h3>
+                  <p className="mt-2 text-on-surface-variant">{event.description}</p>
                 </div>
                 <div className="relative aspect-[16/9] overflow-hidden rounded-md md:aspect-[5/3]">
-                  <Image src={event.image} alt={event.title} fill sizes="(min-width: 768px) 220px, 100vw" className="object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    sizes="(min-width: 768px) 220px, 100vw"
+                    className="object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                  />
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="border-t border-white/10 bg-[#d2f954] px-5 py-20 text-[#0a1f12] md:py-28">
+        <section className="border-t border-outline-variant bg-secondary-container px-5 py-20 text-on-secondary-container md:py-28">
           <div className="mx-auto grid max-w-7xl items-end gap-10 md:grid-cols-[1fr_auto]">
             <div>
               <span className="eyebrow">The doors are open</span>
-              <h2 className="mt-4 max-w-4xl text-[clamp(2.8rem,6vw,6rem)] font-extrabold leading-[.95] tracking-[-.05em]">Come for the coffee.<br />Stay for the spark.</h2>
+              <h2 className="mt-4 max-w-4xl text-[clamp(2.8rem,6vw,6rem)] font-extrabold leading-[.95] tracking-[-.05em]">
+                Come for the coffee.
+                <br />
+                Stay for the spark.
+              </h2>
             </div>
-              <Link href="/spaces" className="inline-flex items-center justify-center rounded-2xl bg-[#0a1f12] px-7 py-4 font-semibold uppercase tracking-wider text-[#faf9f4] transition hover:-translate-y-1 hover:bg-[#173622]">Find a location ↗</Link>
+            <Link
+              href="/spaces"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-7 py-4 font-semibold uppercase tracking-wider text-on-primary transition hover:-translate-y-1 hover:bg-primary-container hover:text-on-primary-container"
+            >
+              Find a location <ArrowUpRight aria-hidden="true" className="size-4" />
+            </Link>
           </div>
         </section>
       </main>

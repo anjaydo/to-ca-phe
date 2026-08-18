@@ -1,4 +1,4 @@
-import {CogIcon} from '@sanity/icons'
+import {Settings as SettingsIcon} from 'lucide-react'
 import type {StructureBuilder, StructureResolver} from 'sanity/structure'
 import pluralize from 'pluralize-esm'
 
@@ -25,5 +25,5 @@ export const structure: StructureResolver = (S: StructureBuilder) =>
       S.listItem()
         .title('Site Settings')
         .child(S.document().schemaType('settings').documentId('siteSettings'))
-        .icon(CogIcon),
+        .icon(SettingsIcon),
     ])

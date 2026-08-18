@@ -1,11 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import {
-  BulbOutlineIcon,
-  ComposeSparklesIcon,
-  LinkIcon,
-  ImageIcon,
-  ControlsIcon,
-} from '@sanity/icons'
+import {Image, Lightbulb, Link, SlidersHorizontal, Sparkles} from 'lucide-react'
 
 /**
  * Call to action schema object.  Objects are reusable schema structures document.
@@ -16,24 +10,24 @@ export const callToAction = defineType({
   name: 'callToAction',
   title: 'Call to Action',
   type: 'object',
-  icon: BulbOutlineIcon,
+  icon: Lightbulb,
   groups: [
     {
       name: 'contents',
-      icon: ComposeSparklesIcon,
+      icon: Sparkles,
       default: true,
     },
     {
       name: 'media',
-      icon: ImageIcon,
+      icon: Image,
     },
     {
       name: 'button',
-      icon: LinkIcon,
+      icon: Link,
     },
     {
       name: 'designSystem',
-      icon: ControlsIcon,
+      icon: SlidersHorizontal,
     },
   ],
   fields: [

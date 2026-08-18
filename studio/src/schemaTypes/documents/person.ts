@@ -1,4 +1,4 @@
-import {UserIcon} from '@sanity/icons'
+import {User} from 'lucide-react'
 import {defineField, defineType} from 'sanity'
 import type {Person} from '../../../sanity.types'
 
@@ -10,7 +10,7 @@ import type {Person} from '../../../sanity.types'
 export const person = defineType({
   name: 'person',
   title: 'Person',
-  icon: UserIcon,
+  icon: User,
   type: 'document',
   fields: [
     defineField({

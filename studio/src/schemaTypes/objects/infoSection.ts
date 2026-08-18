@@ -1,11 +1,11 @@
 import {defineField, defineType} from 'sanity'
-import {TextIcon} from '@sanity/icons'
+import {AlignLeft} from 'lucide-react'
 
 export const infoSection = defineType({
   name: 'infoSection',
   title: 'Info Section',
   type: 'object',
-  icon: TextIcon,
+  icon: AlignLeft,
   fields: [
     defineField({
       name: 'heading',
