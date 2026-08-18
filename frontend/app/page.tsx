@@ -78,10 +78,10 @@ export default function Page() {
             Một không gian cho những ý tưởng mới, những cuộc trò chuyện hay và những ly cà phê thật tử tế giữa lòng Đà Nẵng.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="#menu" className="button-primary">
+            <Link href="/menu" className="button-primary">
               Explore menu <span aria-hidden="true">↗</span>
             </Link>
-            <Link href="#spaces" className="button-secondary">
+            <Link href="/spaces" className="button-secondary">
               Find your Tổ
             </Link>
           </div>
@@ -108,7 +108,7 @@ export default function Page() {
               <span className="eyebrow text-[#d2f954]">01 / Signature</span>
               <h2 className="section-title mt-3">A little ritual,<br />made at Tổ.</h2>
             </div>
-            <Link href="#menu" className="text-link hidden sm:inline-flex">View full menu ↗</Link>
+            <Link href="/menu" className="text-link hidden sm:inline-flex">View full menu ↗</Link>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-12">
@@ -220,7 +220,7 @@ export default function Page() {
               <span className="eyebrow">The doors are open</span>
               <h2 className="mt-4 max-w-4xl text-[clamp(2.8rem,6vw,6rem)] font-extrabold leading-[.95] tracking-[-.05em]">Come for the coffee.<br />Stay for the spark.</h2>
             </div>
-            <Link href="#spaces" className="inline-flex items-center justify-center rounded-2xl bg-[#0a1f12] px-7 py-4 font-semibold uppercase tracking-wider text-[#faf9f4] transition hover:-translate-y-1 hover:bg-[#173622]">Find a location ↗</Link>
+              <Link href="/spaces" className="inline-flex items-center justify-center rounded-2xl bg-[#0a1f12] px-7 py-4 font-semibold uppercase tracking-wider text-[#faf9f4] transition hover:-translate-y-1 hover:bg-[#173622]">Find a location ↗</Link>
           </div>
         </section>
       </main>
