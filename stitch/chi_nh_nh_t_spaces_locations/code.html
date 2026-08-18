@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tổ Cà Phê - Spaces</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "tertiary": "#563400",
+                        "primary-fixed-dim": "#92d6a4",
+                        "surface-container-high": "#e9e8e3",
+                        "surface-bright": "#faf9f4",
+                        "surface-tint": "#296a42",
+                        "on-secondary-fixed-variant": "#304f00",
+                        "on-surface-variant": "#404941",
+                        "surface": "#faf9f4",
+                        "on-primary-fixed": "#00210e",
+                        "secondary-fixed-dim": "#91db2a",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary-fixed-variant": "#09522c",
+                        "background": "#faf9f4",
+                        "on-secondary-container": "#457000",
+                        "surface-container-low": "#f5f4ef",
+                        "primary-container": "#1b5e37",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1c19",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "error": "#ba1a1a",
+                        "outline": "#707970",
+                        "tertiary-container": "#754900",
+                        "primary-fixed": "#aef2bf",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#004523",
+                        "on-primary-container": "#92d5a4",
+                        "secondary-fixed": "#acf847",
+                        "on-tertiary-container": "#ffb95f",
+                        "tertiary-fixed": "#ffddb8",
+                        "outline-variant": "#c0c9bf",
+                        "on-secondary-fixed": "#102000",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#acf847",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#efeee9",
+                        "surface-container-highest": "#e3e3de",
+                        "surface-variant": "#e3e3de",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1b1c19",
+                        "secondary": "#416900",
+                        "inverse-primary": "#92d6a4",
+                        "surface-dim": "#dbdad5",
+                        "on-tertiary-fixed": "#2a1700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin": "24px",
+                        "gutter": "16px",
+                        "section-gap": "64px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "body-md": ["Work Sans"],
+                        "display-lg": ["Be Vietnam Pro"],
+                        "title-md": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-lg": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .editorial-border {
+            border: 1px solid theme('colors.outline-variant');
+        }
+        .organic-shadow {
+            box-shadow: 4px 4px 0px 0px theme('colors.primary');
+        }
+        .branch-card:hover .branch-image-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-body-md bg-background antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-container-margin py-4 w-full sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/10">
+<div class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg font-bold text-primary">
+            Tổ Cà Phê
+        </div>
+<nav class="hidden md:flex space-x-gutter">
+<a class="text-secondary font-bold border-b-2 border-secondary-fixed text-label-sm font-label-sm uppercase tracking-widest px-2 py-1" href="#">Space</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 text-label-sm font-label-sm uppercase tracking-widest px-2 py-1" href="#">Menu</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 text-label-sm font-label-sm uppercase tracking-widest px-2 py-1" href="#">Events</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 text-label-sm font-label-sm uppercase tracking-widest px-2 py-1" href="#">Journal</a>
+<a class="text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 text-label-sm font-label-sm uppercase tracking-widest px-2 py-1" href="#">Careers</a>
+</nav>
+<div class="flex items-center space-x-gutter">
+<span class="hidden md:inline-block text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Live Seats: 85%</span>
+<button class="bg-primary text-on-primary px-6 py-3 text-label-sm font-label-sm uppercase tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-colors duration-300 organic-shadow">Book Now</button>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto overflow-hidden">
+<!-- Hero Section -->
+<section class="px-container-margin relative min-h-[40vh] flex items-center justify-center min-h-[400px] py-8">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(theme('colors.primary') 1px, transparent 1px); background-size: 32px 32px;"></div>
+<div class="text-center z-10 relative">
+<h1 class="font-display-lg text-primary mb-4 relative inline-block text-headline-lg">
+                    Our Spaces
+                    
+</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">Discover our unique sanctuaries across Da Nang. Each location is crafted with a distinct personality, blending modern minimalist design with organic warmth.</p>
+</div>
+</section>
+<!-- Branch List Section -->
+<section class="px-container-margin py-section-gap grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Branch 1 -->
+<article class="branch-card relative group bg-surface border border-primary p-6 flex flex-col justify-between min-h-[400px] organic-shadow hover:-translate-y-1 transition-transform duration-300">
+<div class="z-10 relative">
+<h2 class="text-title-md font-title-md text-primary mb-2">59 Lê Lợi</h2>
+<p class="text-label-sm font-label-sm text-secondary mb-4 uppercase tracking-wider">The Original Sanctuary</p>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">Where it all began. A cozy, intimate space perfect for deep work and intimate conversations. Features our signature vintage brewing equipment on display.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-secondary-container text-on-secondary-container border border-primary px-2 py-1 text-label-sm font-label-sm">Co-working</span>
+<span class="bg-secondary-container text-on-secondary-container border border-primary px-2 py-1 text-label-sm font-label-sm">Quiet Zone</span>
+</div>
+</div>
+<div class="mt-auto z-10">
+<button class="flex items-center text-primary font-bold hover:text-secondary transition-colors text-label-sm uppercase tracking-widest gap-2">
+                        View Gallery <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Hover Image Overlay -->
+<div class="branch-image-overlay absolute inset-0 opacity-0 transition-opacity duration-500 z-0 overflow-hidden bg-surface-container">
+<img alt="59 Le Loi Interior" class="w-full h-full object-cover mix-blend-multiply opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Interior of a cozy coffee shop at 59 Le Loi, featuring vintage brewing equipment, warm wood tones, and natural light streaming through large windows. Modern organic editorial style, high contrast, inviting atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsdRyhuL3ze5Oa7BO8sNAgIfBJezHMQf0kEcsDfVDxBK11CpFx1jdEe8Re1cderq1OZFx1OFG-ADCZcDtEMu_rLeP0PvlE0s3DoxGrPgFf6KGwaJpyzqGubXTAdlummhxc46G4SdKGhczFF-yy4bFD1-ji9Vxw6wF_YD0-P5PlxXtppdDgHIZbfO1YQzmN3_Fc2bVyHt7e3RNRvXQu-F6VKx6pojAcz22P0KH5oZ7V-6Qhy4wQddFRVg">
+</div>
+</article>
+<!-- Branch 2 -->
+<article class="branch-card relative group bg-surface border border-primary p-6 flex flex-col justify-between min-h-[400px] organic-shadow hover:-translate-y-1 transition-transform duration-300">
+<div class="z-10 relative">
+<h2 class="text-title-md font-title-md text-primary mb-2">80A Nguyễn Chí Thanh</h2>
+<p class="text-label-sm font-label-sm text-secondary mb-4 uppercase tracking-wider">Modern Minimalist</p>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">A sleek, open-plan environment designed for collaboration and creativity. Boasts a dedicated matcha bar and expansive communal tables.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-secondary-container text-on-secondary-container border border-primary px-2 py-1 text-label-sm font-label-sm">Matcha Specialty</span>
+<span class="bg-secondary-container text-on-secondary-container border border-primary px-2 py-1 text-label-sm font-label-sm">Events</span>
+</div>
+</div>
+<div class="mt-auto z-10">
+<button class="flex items-center text-primary font-bold hover:text-secondary transition-colors text-label-sm uppercase tracking-widest gap-2">
+                        View Gallery <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<img alt="Tổ Cà Phê Mascot" class="absolute bottom-6 right-6 w-16 h-16 object-contain z-10 opacity-80" data-alt="A cute illustrative mascot of a dog peeking out, hand-drawn style, organic editorial aesthetic, flat colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Xd5hi0F51oGsD6b9AfVlNzMsfhPLQJJXVUrM0hj8wBCw8VrlBTa6sugigQm3bo8GtIZDlwBkhweKB9HIa90P0BG4hg-eIASNSJtymQQG1gfEAJQ4adkoyOkiOxuPqB0Xly5B5DjtOYjkFDMNRfjErBDmP-0zDDk018Vncx0E2_HPTUZVLNSp3Oc-i3fK2uvR4jfCb4tizCQAuJFpxwlO5XKThXuirqGTRqXh1flvrFumRHkcEqsf13JJKmkSxRdpV6o">
+<!-- Hover Image Overlay -->
+<div class="branch-image-overlay absolute inset-0 opacity-0 transition-opacity duration-500 z-0 overflow-hidden bg-surface-container">
+<img alt="80A Nguyen Chi Thanh Interior" class="w-full h-full object-cover mix-blend-multiply opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Sleek, minimalist interior of a coffee shop at 80A Nguyen Chi Thanh, featuring a dedicated matcha bar, clean lines, and communal tables. Modern organic editorial style, bright lighting, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_s36y2l2ggY8BDIpN0UK0f2panbVHBbdjRXt6K0z_kN-gPlyitmyyJMHT6U6wcDie-jgjbmM4FCv5sYz7tkn2FRk6oiXnu4P-AmTsmejafyxNh5AccFl7wQcXPulYXAS8Sjn_uMcr3w3MDWDjl7RRB8eJr4PuxH8NTvw8zyLaHNZmA_il3ULY8ONOxmSdLbccbp-KqWWGkELn5iZBtzI7HsRkoLp-qg44zaWFrlJqIzNoclZoGp4kag">
+</div>
+</article>
+<!-- Branch 3 -->
+<article class="branch-card relative group bg-surface border border-primary p-6 flex flex-col justify-between min-h-[400px] organic-shadow hover:-translate-y-1 transition-transform duration-300">
+<div class="z-10 relative">
+<h2 class="text-title-md font-title-md text-primary mb-2">357 Nguyễn Tất Thành</h2>
+<p class="text-label-sm font-label-sm text-secondary mb-4 uppercase tracking-wider">Sea Breeze Hub</p>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">Enjoy stunning ocean views from our spacious terrace. The perfect spot for a refreshing iced beverage after a long walk along the beach.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-secondary-container text-on-secondary-container border border-primary px-2 py-1 text-label-sm font-label-sm">Outdoor Seating</span>
+<span class="bg-secondary-container text-on-secondary-container border border-primary px-2 py-1 text-label-sm font-label-sm">Sunset Views</span>
+</div>
+</div>
+<div class="mt-auto z-10">
+<button class="flex items-center text-primary font-bold hover:text-secondary transition-colors text-label-sm uppercase tracking-widest gap-2">
+                        View Gallery <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Hover Image Overlay -->
+<div class="branch-image-overlay absolute inset-0 opacity-0 transition-opacity duration-500 z-0 overflow-hidden bg-surface-container">
+<img alt="357 Nguyen Tat Thanh Interior" class="w-full h-full object-cover mix-blend-multiply opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Outdoor terrace of a coffee shop at 357 Nguyen Tat Thanh with ocean views, comfortable seating, and soft sunset lighting. Modern organic editorial style, airy and relaxed atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVrvCOM-uUIlX320LVPyvQ50kzhrvOSq9iFdfomIUud1SCEkYKSQDGq_IXAkFdw1owaRfbs9Qky0ExCMCL5b_fVlVVMuV3r4m2f2hSYoPlh3IVNWgeWXzP-GftN9bV9kz8KcGJPIHL-RUBmcbHttnIZLxJtomFwH9wdnEm5oE72RRcJHTfqBwuoIjX4U1spUBDo4IL7K3wEnJyE5WyfCINWrap2TCpJQbA95Yu0nJBZNZGYoopgndp_g">
+</div>
+</article>
+</section>
+<!-- Interactive Map Section -->
+<section class="px-container-margin py-section-gap">
+<div class="relative w-full h-[600px] bg-inverse-surface border-2 border-primary organic-shadow overflow-hidden flex items-center justify-center">
+<!-- Map Background Placeholder -->
+<div class="absolute inset-0 opacity-50 bg-[url('placeholder')] bg-cover bg-center grayscale mix-blend-luminosity" data-alt="A stylized, artistic map of Da Nang city, minimalist lines, dark forest green tones, highlighting coastal areas and main roads. Organic editorial aesthetic." data-location="Da Nang"></div>
+<div class="relative z-10 text-center w-full h-full flex flex-col items-center justify-center">
+<h3 class="text-headline-lg font-headline-lg text-secondary-fixed mb-8 bg-inverse-surface/80 py-2 border border-secondary-fixed inline-block backdrop-blur-sm px-2">Find Your Spot</h3>
+<!-- Simulated Map Pins -->
+<div class="relative w-full max-w-4xl h-[400px]">
+<!-- Pin 1 -->
+<button class="absolute top-[20%] left-[30%] group flex flex-col items-center transition-transform hover:scale-110">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl drop-shadow-md">location_on</span>
+<span class="text-inverse-on-surface bg-primary px-2 py-1 text-label-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity border border-secondary-fixed">59 Lê Lợi</span>
+</button>
+<!-- Pin 2 -->
+<button class="absolute top-[50%] left-[50%] group flex flex-col items-center transition-transform hover:scale-110">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl drop-shadow-md">location_on</span>
+<span class="text-inverse-on-surface bg-primary px-2 py-1 text-label-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity border border-secondary-fixed">80A Nguyễn Chí Thanh</span>
+</button>
+<!-- Pin 3 -->
+<button class="absolute top-[40%] right-[25%] group flex flex-col items-center transition-transform hover:scale-110">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl drop-shadow-md">location_on</span>
+<span class="text-inverse-on-surface bg-primary px-2 py-1 text-label-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity border border-secondary-fixed">357 Nguyễn Tất Thành</span>
+</button>
+</div>
+</div>
+<!-- Decorative Element -->
+<img alt="Map Decorative Element" class="absolute bottom-8 left-8 w-32 h-32 object-contain opacity-70" data-alt="A cute illustrative mascot of a cat holding a flag, hand-drawn style, organic editorial aesthetic, flat colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAylmE-cVrOU038SfkrmdjK9GTOT52R2MX9fxnubpeLXB2WYug9Hkb0WfMoqwRd4uEqki98uQtjx-BgxxbT7c60ykQ7oP3tlAbHeH3oxEqQijtujbTzd3azwZ3ZJDLzEDuqspx53Lfnt4qjKcrNfP5a6Q0d0g_-lpSAxt3KqzYl9RQvrF04S4-M13Vp__fLX8qE7uYs9XinqLM-psI7h6qM4bjrZR4b_-z4LrjUX7T7cG_c79MmEcwhbcjwIrXskCcVgbE">
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-inverse-surface grid grid-cols-1 md:grid-cols-4 gap-gutter-desktop px-container-margin py-16 w-full mt-section-gap">
+<div class="col-span-1 md:col-span-1 flex flex-col space-y-4">
+<div class="text-headline-lg font-headline-lg text-secondary-fixed">
+                Tổ Cà Phê
+            </div>
+<p class="text-body-md font-body-md text-inverse-on-surface dark:text-inverse-on-surface">
+                © 2024 Tổ Cà Phê. 59 Lê Lợi, Da Nang.
+            </p>
+</div>
+<div class="col-span-1 md:col-span-3 flex justify-end items-end space-x-gutter">
+<a class="text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all text-label-sm font-label-sm" href="#">Instagram</a>
+<a class="text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all text-label-sm font-label-sm" href="#">Facebook</a>
+<a class="text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all text-label-sm font-label-sm" href="#">Privacy Policy</a>
+<a class="text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all text-label-sm font-label-sm" href="#">Terms of Service</a>
+</div>
+</footer>
+
+
+</body></html>

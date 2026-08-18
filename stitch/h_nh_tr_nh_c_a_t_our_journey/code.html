@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Hành Trình Của Tổ - Tổ Cà Phê</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Work+Sans:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#ffb95f",
+                        "on-surface-variant": "#404941",
+                        "primary-fixed-dim": "#92d6a4",
+                        "surface-variant": "#e3e3de",
+                        "surface-container": "#efeee9",
+                        "primary-fixed": "#aef2bf",
+                        "surface-container-highest": "#e3e3de",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f5f4ef",
+                        "surface": "#faf9f4",
+                        "primary": "#004523",
+                        "tertiary-container": "#754900",
+                        "secondary-container": "#acf847",
+                        "surface-dim": "#dbdad5",
+                        "tertiary": "#563400",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-bright": "#faf9f4",
+                        "primary-container": "#1b5e37",
+                        "on-background": "#1b1c19",
+                        "on-primary-container": "#92d5a4",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "outline": "#707970",
+                        "on-primary-fixed-variant": "#09522c",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#296a42",
+                        "background": "#faf9f4",
+                        "on-primary-fixed": "#00210e",
+                        "on-secondary-fixed": "#102000",
+                        "surface-container-high": "#e9e8e3",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#457000",
+                        "on-surface": "#1b1c19",
+                        "outline-variant": "#c0c9bf",
+                        "secondary": "#416900",
+                        "secondary-fixed": "#acf847",
+                        "on-secondary-fixed-variant": "#304f00",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#91db2a",
+                        "inverse-primary": "#92d6a4",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "title-md": ["Be Vietnam Pro"],
+                        "display-lg": ["Be Vietnam Pro"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .font-headline-lg { font-family: theme('fontFamily.headline-lg'); font-size: theme('fontSize.headline-lg.0'); line-height: theme('fontSize.headline-lg.1.lineHeight'); font-weight: theme('fontSize.headline-lg.1.fontWeight'); }
+            .font-body-lg { font-family: theme('fontFamily.body-lg'); font-size: theme('fontSize.body-lg.0'); line-height: theme('fontSize.body-lg.1.lineHeight'); font-weight: theme('fontSize.body-lg.1.fontWeight'); }
+            .font-headline-lg-mobile { font-family: theme('fontFamily.headline-lg-mobile'); font-size: theme('fontSize.headline-lg-mobile.0'); line-height: theme('fontSize.headline-lg-mobile.1.lineHeight'); font-weight: theme('fontSize.headline-lg-mobile.1.fontWeight'); }
+            .font-title-md { font-family: theme('fontFamily.title-md'); font-size: theme('fontSize.title-md.0'); line-height: theme('fontSize.title-md.1.lineHeight'); font-weight: theme('fontSize.title-md.1.fontWeight'); }
+            .font-display-lg { font-family: theme('fontFamily.display-lg'); font-size: theme('fontSize.display-lg.0'); line-height: theme('fontSize.display-lg.1.lineHeight'); font-weight: theme('fontSize.display-lg.1.fontWeight'); letter-spacing: theme('fontSize.display-lg.1.letterSpacing'); }
+            .font-label-sm { font-family: theme('fontFamily.label-sm'); font-size: theme('fontSize.label-sm.0'); line-height: theme('fontSize.label-sm.1.lineHeight'); font-weight: theme('fontSize.label-sm.1.fontWeight'); letter-spacing: theme('fontSize.label-sm.1.letterSpacing'); }
+            .font-body-md { font-family: theme('fontFamily.body-md'); font-size: theme('fontSize.body-md.0'); line-height: theme('fontSize.body-md.1.lineHeight'); font-weight: theme('fontSize.body-md.1.fontWeight'); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="bg-background/80 backdrop-blur-md dark:bg-background/80 border-b border-outline-variant/10 flex justify-between items-center px-container-margin py-4 w-full sticky top-0 z-50">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">Tổ Cà Phê</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 font-label-md text-label-md" href="#">Space</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 font-label-md text-label-md" href="#">Menu</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 font-label-md text-label-md" href="#">Events</a>
+<a class="text-secondary font-bold border-b-2 border-secondary-fixed hover:text-secondary-fixed transition-colors duration-300 font-label-md text-label-md" href="#">Journal</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors duration-300 font-label-md text-label-md" href="#">Careers</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden lg:inline text-on-surface-variant font-label-sm text-label-sm">Live Seats: 85%</span>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-DEFAULT hover:bg-primary-container transition-colors font-label-sm text-label-sm">Book Now</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="w-full">
+<!-- Hero Section -->
+<header class="w-full px-container-margin py-section-gap flex flex-col items-center text-center max-w-4xl mx-auto">
+<span class="bg-secondary-container border-2 border-primary text-primary px-3 py-1 rounded-full font-label-sm text-label-sm mb-6 inline-block">OUR STORY</span>
+<h1 class="font-display-lg text-primary mb-6">Hành Trình Của Tổ</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">Từ một góc nhỏ tĩnh lặng đến những không gian làm việc sâu truyền cảm hứng. Đây là câu chuyện về quá trình trưởng thành cùng cộng đồng của chúng tôi qua từng hạt cà phê và lá matcha.</p>
+</header>
+<!-- Timeline Section -->
+<section class="w-full px-container-margin pb-section-gap max-w-6xl mx-auto flex flex-col gap-section-gap">
+<!-- 2018: The First Nest -->
+<article class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="relative w-full aspect-[4/3] md:order-1 order-2">
+<img class="absolute inset-0 w-full h-full object-cover border border-primary/20 rounded-lg shadow-sm" data-alt="A warm, inviting photo of a small, cozy cafe interior in 2018. The lighting is soft and golden, highlighting wooden furniture and a small espresso machine. The modern organic editorial style features high-contrast tones, deep forest green accents, and a nostalgic yet clean aesthetic typical of a boutique coffee shop beginnings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCpEXOsnfiGPKgfaQ_G2X_L2g0EuHh4lFFKCEKjpfi1WmvDR8v_EzLcQtqF0BtTHG7SQWTL0XXEzeG-Y0k5N6QHaC3a51mAEzzy74NB3xp28vcvqnw-6ktNhyg5nrkCL32UtNKmsveLFKDrQEIIHTCRpDno5uCt7fXWbxzxgsCj1Ntc-K1hS5wZO0Rk7Cyozz2_7TXaGdGcSxeIEUmou0OooouywU57WzFR80C9MKFox6taJMC99jHvg">
+</div>
+<div class="md:px-8 flex flex-col items-start md:order-2 order-1">
+<span class="font-label-sm text-primary-container bg-surface-container-high px-2 py-1 border border-outline-variant rounded mb-4">2018</span>
+<h2 class="font-headline-lg text-primary mb-4">Khởi Nguyên Tại Lê Lợi</h2>
+<p class="font-body-md text-on-surface-variant mb-4">Mọi thứ bắt đầu tại 59 Lê Lợi, một góc nhỏ tĩnh lặng giữa trung tâm Đà Nẵng. Chúng tôi gọi nó là "Tổ" đầu tiên - một nơi trú ẩn an toàn cho những tâm hồn cần sự tập trung và một ly cà phê chất lượng để bắt đầu ngày mới.</p>
+</div>
+</article>
+<!-- 2020: Deep Work Era -->
+<article class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="md:px-8 flex flex-col items-start order-1">
+<span class="font-label-sm text-primary-container bg-surface-container-high px-2 py-1 border border-outline-variant rounded mb-4">2020</span>
+<h2 class="font-headline-lg text-primary mb-4">Định Hình Không Gian Sâu</h2>
+<p class="font-body-md text-on-surface-variant mb-4">Giữa những biến động của đại dịch, chúng tôi nhận ra nhu cầu mãnh liệt về một không gian làm việc chuyên nghiệp ngoài văn phòng. Tổ định hình lại mình, tập trung thiết kế các "khu vực làm việc sâu" (Deep Work Spaces) với ánh sáng và âm thanh được tối ưu hóa.</p>
+</div>
+<div class="relative w-full aspect-[4/3] order-2">
+<img class="absolute inset-0 w-full h-full object-cover border border-primary/20 rounded-lg shadow-sm" data-alt="An editorial photo of a minimalist, well-lit workspace inside a cafe. Features a long wooden table with individual task lamps, people working quietly on laptops. The mood is focused and serene. The aesthetic is modern organic with deep forest greens, soft parchment tones, and structured layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC68PBvonAEfRCTDhaWpODBH7sxFlo5wlrKVQigZdFWjC1a_ZxQlyvpZQdshulOk29_jbG2qvBWtR92aB75xlGbH0jyAZtiltOWD7K7NuXWPqGkTsPciDtcKsSuS4yHnP3f7Zyel6svJj8D4grMFfGz86U8dbd82K5Cl75a_bVrX121dZHzlI9FLa_1jPYeUIUVbZ0ql_BSHV6VPBDcw4MwlOR-IyqZYawjxFarhiixEgcObw5yBzNH7g">
+</div>
+</article>
+<!-- 2022: 24/7 Expansion -->
+<article class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="relative w-full aspect-[4/3] md:order-1 order-2">
+<img class="absolute inset-0 w-full h-full object-cover border border-primary/20 rounded-lg shadow-sm" data-alt="A moody, atmospheric night exterior shot of a cafe building with warm interior lights glowing through large windows. The sign 'Tổ Cà Phê' is faintly visible. The editorial style captures a sense of a late-night sanctuary, utilizing dark forest green shadows and glowing golden light accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTdG1NrleIEy93n6zjVAR-5St-BpBiNoS2P-A4yXsOinqZ91RaPD8ToWFpeXsnSKKW3fFc2ux8xfDfxfCX00Bq2_IgHwiwLDvng4Hnlt3xPlmWuw39ugPG-iNqHcx9qbt1JkIeBqIkVfB7y3wkw5GleluWI7Sol7Oiz4xXLMVnEW4nkkUEi7ibHEs34InhBHj3Ic0H1XkGEx-V2iBScECjD91ITIXOwZLo00fhWV_0W532XZwb3ySjiw">
+</div>
+<div class="md:px-8 flex flex-col items-start md:order-2 order-1">
+<span class="font-label-sm text-primary-container bg-surface-container-high px-2 py-1 border border-outline-variant rounded mb-4">2022</span>
+<h2 class="font-headline-lg text-primary mb-4">Bước Chuyển 24/7</h2>
+<p class="font-body-md text-on-surface-variant mb-4">Khai trương chi nhánh 80A Nguyễn Chí Thanh, đánh dấu bước chuyển mình với mô hình hoạt động 24/7. Chúng tôi muốn Tổ luôn ở đó, bất kể là sáng sớm tinh mơ hay đêm muộn, trở thành người bạn đồng hành cùng những "cú đêm" chạy deadline.</p>
+</div>
+</article>
+<!-- 2024: The Coastal Hub -->
+<article class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="md:px-8 flex flex-col items-start order-1">
+<span class="font-label-sm text-primary-container bg-surface-container-high px-2 py-1 border border-outline-variant rounded mb-4">2024</span>
+<h2 class="font-headline-lg text-primary mb-4">Hành Trình Mới Bờ Biển</h2>
+<p class="font-body-md text-on-surface-variant mb-4">Trạm dừng chân mới nhất tại 357 Nguyễn Tất Thành mang hơi thở của biển cả. Đặc biệt, đây là nơi Tổ giới thiệu dòng Specialty Matcha cao cấp, mở ra một chương mới trong hành trình mang đến những trải nghiệm đồ uống tinh tế và không gian thư giãn tĩnh lặng.</p>
+</div>
+<div class="relative w-full aspect-[4/3] order-2">
+<img class="absolute inset-0 w-full h-full object-cover border border-primary/20 rounded-lg shadow-sm" data-alt="A bright, airy photo of a modern coastal cafe interior featuring large windows looking out towards a subtle ocean view. The focal point is a beautifully crafted bowl of vibrant green matcha being prepared on a sleek counter. The style is highly editorial, bright, with crisp organic textures and chartreuse green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg0gF7Wi1VVShGY0fZYA26NcLHMMNT1Sxuo7jLUHZBmcE5G6a_lmdBhjE4e5UvwKfgxTdJ8gfVnSzr92PvcyIjRgu1NSvBGZz1vCRxpMRBr-ucgiv1UYOBONVSky0k9H9iu-5JssFPvX_H-MvkhhHTU5X6tOvl_olhkC6CI5pTXDwe7MaWBZWPnQiR1IgG_HOeN0xT583VRSlkt8-FR69Sizu4qzzTJD2klZGGHP6GIIVjFhA_uyhNnA">
+</div>
+</article>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-inverse-surface grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-margin py-16 w-full text-inverse-on-surface dark:text-inverse-on-surface">
+<div class="col-span-1 md:col-span-2 flex flex-col gap-4">
+<span class="font-headline-lg text-secondary-fixed">Tổ Cà Phê</span>
+<p class="font-body-md text-tertiary-fixed-dim">© 2024 Tổ Cà Phê. 59 Lê Lợi, Da Nang.</p>
+</div>
+<div class="col-span-1 flex flex-col gap-2">
+<a class="font-label-sm text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all" href="#">Instagram</a>
+<a class="font-label-sm text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all" href="#">Facebook</a>
+</div>
+<div class="col-span-1 flex flex-col gap-2">
+<a class="font-label-sm text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-tertiary-fixed-dim hover:text-secondary-fixed underline transition-all" href="#">Terms of Service</a>
+</div>
+</footer>
+</body></html>

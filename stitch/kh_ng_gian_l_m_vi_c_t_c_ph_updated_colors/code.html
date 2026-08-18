@@ -1,0 +1,327 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tổ Cà Phê - Co-Working Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-primary": "#92d6a4",
+                "surface": "#faf9f4",
+                "on-tertiary-fixed": "#2a1700",
+                "on-secondary-fixed": "#102000",
+                "surface-container-lowest": "#ffffff",
+                "surface-dim": "#dbdad5",
+                "tertiary-fixed": "#ffddb8",
+                "on-primary": "#ffffff",
+                "tertiary": "#563400",
+                "tertiary-fixed-dim": "#ffb95f",
+                "surface-container-low": "#f5f4ef",
+                "on-secondary-container": "#457000",
+                "secondary-fixed": "#acf847",
+                "error-container": "#ffdad6",
+                "surface-container": "#efeee9",
+                "on-tertiary-container": "#ffb95f",
+                "on-surface": "#1b1c19",
+                "surface-container-highest": "#e3e3de",
+                "on-tertiary-fixed-variant": "#653e00",
+                "primary-fixed": "#aef2bf",
+                "inverse-on-surface": "#f2f1ec",
+                "on-secondary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "on-background": "#1b1c19",
+                "on-surface-variant": "#404941",
+                "secondary-fixed-dim": "#91db2a",
+                "on-primary-fixed-variant": "#09522c",
+                "error": "#ba1a1a",
+                "on-error-container": "#93000a",
+                "outline": "#707970",
+                "primary-fixed-dim": "#92d6a4",
+                "surface-container-high": "#e9e8e3",
+                "surface-tint": "#296a42",
+                "on-error": "#ffffff",
+                "secondary": "#416900",
+                "inverse-surface": "#30312e",
+                "on-primary-fixed": "#00210e",
+                "secondary-container": "#acf847",
+                "primary-container": "#1b5e37",
+                "primary": "#004523",
+                "on-primary-container": "#92d5a4",
+                "on-secondary-fixed-variant": "#304f00",
+                "surface-bright": "#faf9f4",
+                "outline-variant": "#c0c9bf",
+                "background": "#faf9f4",
+                "surface-variant": "#e3e3de",
+                "tertiary-container": "#754900"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8px",
+                "container-margin": "24px",
+                "gutter": "16px",
+                "section-gap": "64px"
+        },
+        "fontFamily": {
+                "title-md": [
+                        "Be Vietnam Pro"
+                ],
+                "label-sm": [
+                        "JetBrains Mono"
+                ],
+                "body-lg": [
+                        "Work Sans"
+                ],
+                "headline-lg-mobile": [
+                        "Be Vietnam Pro"
+                ],
+                "headline-lg": [
+                        "Be Vietnam Pro"
+                ],
+                "display-lg": [
+                        "Be Vietnam Pro"
+                ],
+                "body-md": [
+                        "Work Sans"
+                ]
+        },
+        "fontSize": {
+                "title-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "display-lg": [
+                        "56px",
+                        {
+                                "lineHeight": "64px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .film-grain {
+            position: relative;
+        }
+        .film-grain::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md film-grain min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<a class="text-title-md font-title-md font-bold text-primary" href="#">Tổ Cà Phê</a>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-secondary font-bold border-b-2 border-secondary-fixed text-label-sm font-label-sm" href="#">Space</a>
+<a class="text-on-surface-variant text-label-sm font-label-sm hover:text-secondary-fixed transition-colors duration-300" href="#">Menu</a>
+<a class="text-on-surface-variant text-label-sm font-label-sm hover:text-secondary-fixed transition-colors duration-300" href="#">Events</a>
+<a class="text-on-surface-variant text-label-sm font-label-sm hover:text-secondary-fixed transition-colors duration-300" href="#">Journal</a>
+<a class="text-on-surface-variant text-label-sm font-label-sm hover:text-secondary-fixed transition-colors duration-300" href="#">Careers</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-label-sm font-label-sm text-on-surface-variant hidden md:inline-block">Live Seats: 85%</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full text-label-sm font-label-sm hover:bg-secondary-fixed hover:text-primary transition-colors duration-300">Book Now</button>
+</div>
+</nav>
+<main class="flex-grow w-full max-w-7xl mx-auto px-5 md:px-6 py-12 flex flex-col gap-16">
+<!-- Header Hero -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 flex flex-col gap-6">
+<span class="inline-block bg-surface-container text-primary px-3 py-1 rounded-full text-label-sm font-label-sm w-max border border-outline-variant/20">Co-working Space</span>
+<h1 class="text-display-lg font-display-lg text-primary">Your creative sanctuary in Da Nang.</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Sunlit desks, high-speed Wi-Fi, and endless matcha. Whether you're coding, designing, or just dreaming, find your flow here.</p>
+<div class="flex gap-4 items-center">
+<button class="bg-secondary-fixed text-primary px-6 py-3 rounded-full text-label-sm font-label-sm hover:bg-primary hover:text-secondary-fixed transition-colors shadow-sm">Book a Team Table</button>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span>Currently 85% Full</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 h-[400px] md:h-[500px] rounded-2xl overflow-hidden relative border border-outline-variant/10 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A bright, sunlit modern co-working cafe space with large windows, lush green plants, warm wooden tables, and people working on laptops. The atmosphere is calm, creative, and energetic, embodying an organic modernism aesthetic with soft green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN6RuWstWAzBrExWmDyXo920Xz8-frZDX7GZg-8c7m4rdVPjrGnoy1EwO7QmDVwaC85X_cVK2iZ5U4Atd70Z6xui9JU_nIao_DW1X0bbtN99Pe26yakqmPXb2jcfrp-7fjkr7f97ct7ZZ_zVwM3PCR449yYvPs7dHUMCk2RhJfoXZa0klZaEe-N9M6JAnQyjAPpY-oVvP6B32TYfO9sbkOruO9ro5TTSfQYdkERrDO0crnUx2Ic7nQbw">
+<img alt="Logo" class="absolute bottom-4 right-4 w-24 h-auto drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS2fF-4A1J9CoRYMzjRzCc9O0IAX53eA9wMQt0XKjvMV1TPqLSFMghiAIk3VqGJXcQyh-fbcveTRxWiR8jQ5CswqALecv5lYI_KTBjZN0iu_bvOGHm5KvpfIkXjyxoGtFpiaimX4miZpg9LVsikmyoZ3HU7ao4JtyQBGxwPntuiiXHaHG5NcX_xXZZMNacBGOTA-6itUzBfMNKbwGVU0atT7EoZsWmjGYkKiQz4YHaRwM-9321ZWr2uOJ-w7mKf9As5qg">
+</div>
+</section>
+<!-- Floor Plan & Density -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-12">
+<h2 class="text-headline-lg font-headline-lg text-primary mb-8 border-b border-outline-variant/10 pb-4">Choose Your Vibe</h2>
+</div>
+<div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Quiet Zone -->
+<div class="bg-surface-container rounded-2xl p-8 border border-primary/10 flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-title-md font-title-md text-primary group-hover:text-secondary transition-colors">Quiet Zone</h3>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">headphones</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">Private desks with acoustic panels for deep, uninterrupted focus.</p>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-background px-2 py-1 rounded">2 Seats Left</span>
+<img alt="Mascot Illustration" class="w-16 h-16 object-contain opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHKMsFXK5Q4w6qzDjYj6m4YXapflz4GZFvK0xssyEk5I0XNtZSe-iZloGHkQCcpz9SMi7uWhRhyRUUs8ep4h3P_rz3IvTMSeagEQhH59sUQR7yxPJAoFwTzCzFOgLuX190fEEP7HEdF-Uddb1XPsq8APbswvzppy1jUqZ1NO2fICITIopoJRWI8AKYJUGtm15uE4vvBsRhFFh4kQhvMnvXyi8vnq7D5iTSVwJ4J9rytr1g3fD-Sy83k7ImYZ0CTau6QsQ">
+</div>
+</div>
+<!-- Team Area -->
+<div class="bg-surface-container rounded-2xl p-8 border border-primary/10 flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-title-md font-title-md text-primary group-hover:text-secondary transition-colors">Team Area</h3>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">Long communal tables perfect for collaboration and workshops.</p>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-background px-2 py-1 rounded">Plenty of Space</span>
+</div>
+</div>
+<!-- Outdoor Balcony -->
+<div class="bg-surface-container rounded-2xl p-8 border border-primary/10 flex flex-col justify-between md:col-span-2 group hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="z-10 relative md:w-1/2">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-title-md font-title-md text-primary group-hover:text-secondary transition-colors">Outdoor Balcony</h3>
+<span class="material-symbols-outlined text-primary md:hidden" style="font-variation-settings: 'FILL' 1;">balcony</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">Fresh air and inspiring views of Lê Lợi street. Perfect for casual meetings.</p>
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-background px-2 py-1 rounded inline-block">Moderate Traffic</span>
+</div>
+<div class="absolute inset-y-0 right-0 w-1/2 hidden md:block opacity-40">
+<img class="w-full h-full object-cover" data-alt="A view of a lively city street in Da Nang from a breezy cafe balcony, shaded by lush tropical plants, with warm morning sunlight filtering through." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7qNG_WxDCYzJmBTSYUXBkkiENgatVSS76s1OrlEQf0UuvPLJB3vA3P1VryQXzuQG5QZ0mGd0JkSVpP48OXmo3tmjvwu_RpiM9SOiHWkySCwXv-Pkr4ZXCbdvNXwLcsMG3lIYhRi-3dYMMN6Mi5zU5-7ctVsF2MF3uCUBE4mxbSebGZEtdE7yDmDepkEZHOWRK8Tq5xU2Pjo66lZE0BQej0SUKkgoJhA-ZlA1rbZSaFDKu3DZFH867uA">
+</div>
+</div>
+</div>
+<!-- Density Meter -->
+<div class="md:col-span-4 bg-primary text-on-primary rounded-2xl p-8 flex flex-col justify-between shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+<div>
+<h3 class="text-title-md font-title-md mb-2 relative z-10">Real-time Density</h3>
+<p class="text-body-md font-body-md text-primary-fixed-dim mb-8 relative z-10">Check before you drop in.</p>
+<div class="flex items-end gap-2 mb-2 relative z-10">
+<span class="text-display-lg font-display-lg text-secondary-fixed">85</span>
+<span class="text-headline-lg font-headline-lg text-primary-fixed-dim pb-1">%</span>
+</div>
+<div class="w-full bg-primary-fixed-dim/30 h-2 rounded-full overflow-hidden mb-4 relative z-10">
+<div class="bg-secondary-fixed h-full rounded-full" style="width: 85%;"></div>
+</div>
+<p class="text-label-sm font-label-sm text-primary-fixed-dim relative z-10">Vibrant &amp; Bustling right now</p>
+</div>
+<button class="w-full bg-secondary-fixed text-primary py-3 rounded-full text-label-sm font-label-sm hover:bg-white transition-colors mt-8 relative z-10">Secure a Spot</button>
+</div>
+</section>
+<!-- Amenities Grid -->
+<section>
+<h2 class="text-headline-lg font-headline-lg text-primary mb-8 text-center">Everything you need.</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+<div class="flex flex-col items-center text-center p-6 border border-outline-variant/15 rounded-2xl bg-surface hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">ac_unit</span>
+</div>
+<h4 class="text-label-sm font-label-sm text-primary mb-1">24/7 AC</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Stay cool always.</p>
+</div>
+<div class="flex flex-col items-center text-center p-6 border border-outline-variant/15 rounded-2xl bg-surface hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">print</span>
+</div>
+<h4 class="text-label-sm font-label-sm text-primary mb-1">High-speed Print</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Laser sharp.</p>
+</div>
+<div class="flex flex-col items-center text-center p-6 border border-outline-variant/15 rounded-2xl bg-surface hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">local_cafe</span>
+</div>
+<h4 class="text-label-sm font-label-sm text-primary mb-1">Artisan Snacks</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Fuel your focus.</p>
+</div>
+<div class="flex flex-col items-center text-center p-6 border border-outline-variant/15 rounded-2xl bg-surface hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">power</span>
+</div>
+<h4 class="text-label-sm font-label-sm text-primary mb-1">Outlets Everywhere</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Never run dry.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-6 py-16 w-full bg-inverse-surface text-inverse-on-surface mt-12">
+<div class="col-span-1 md:col-span-2">
+<div class="text-headline-lg font-headline-lg text-secondary-fixed mb-4">Tổ Cà Phê</div>
+<p class="text-body-md font-body-md mb-8 max-w-sm">A creative co-working hub bridging grounded tradition with electric editorial energy.</p>
+<p class="text-label-sm font-label-sm text-tertiary-fixed-dim">© 2024 Tổ Cà Phê. 59 Lê Lợi, Da Nang.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-sm font-label-sm font-bold mb-2">Social</span>
+<a class="text-tertiary-fixed-dim text-label-sm font-label-sm hover:text-secondary-fixed underline transition-all" href="#">Instagram</a>
+<a class="text-tertiary-fixed-dim text-label-sm font-label-sm hover:text-secondary-fixed underline transition-all" href="#">Facebook</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-sm font-label-sm font-bold mb-2">Legal</span>
+<a class="text-tertiary-fixed-dim text-label-sm font-label-sm hover:text-secondary-fixed underline transition-all" href="#">Privacy Policy</a>
+<a class="text-tertiary-fixed-dim text-label-sm font-label-sm hover:text-secondary-fixed underline transition-all" href="#">Terms of Service</a>
+</div>
+</footer>
+</body></html>
