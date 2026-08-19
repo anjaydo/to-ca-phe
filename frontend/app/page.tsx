@@ -15,7 +15,6 @@ export async function generateMetadata(): Promise<Metadata> {
   const seo = page?.seo || (settings as Settings)?.defaultSeo
   let openGraphImage = null
   try {
-    console.log(settings)
     openGraphImage = resolveOpenGraphImage(
       !!seo?.openGraphImage?.asset
         ? seo?.openGraphImage
