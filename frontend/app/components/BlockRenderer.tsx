@@ -81,7 +81,7 @@ function SectionHeading({
 function Hero({block}: {block: ExtractPageBuilderType<'heroBlock'>}) {
   if (stegaClean(block.variant) === 'immersive') {
     return (
-      <header className="hero relative flex min-h-[680px] items-center justify-center overflow-hidden border-b border-primary/50 px-5 py-24 md:min-h-[calc(100svh-81px)]">
+      <header className="hero relative flex h-[100dvh] items-center justify-center overflow-hidden border-b border-primary/50 px-5 py-24 md:min-h-[calc(100svh-81px)]">
         <div className="absolute inset-0">
           <SanityPicture image={block.image} className="size-full object-cover" width={2000} />
         </div>
@@ -184,12 +184,12 @@ function MenuHighlights({block}: {block: ExtractPageBuilderType<'menuHighlightsB
         {block.items?.map(
           (item, index) =>
             item && (
-              <article
+              index === 0 ? (<article
                 key={item._id}
                 className={`group overflow-hidden rounded-xl border border-outline-variant bg-surface-container-highest ${index === 0 ? 'lg:col-span-2 lg:grid lg:grid-cols-2' : ''}`}
               >
                 <div
-                  className={`relative min-h-80 overflow-hidden ${index === 0 ? 'lg:min-h-[500px]' : ''}`}
+                  className={`relative flex justify-center overflow-hidden items-center min-h-80 lg:h-full max-w-full aspect-[4/3] lg:aspect-square overflow-hidden ${index === 0 ? 'lg:min-h-[400px]' : ''}`}
                 >
                   <SanityPicture
                     image={item.image}
@@ -216,7 +216,39 @@ function MenuHighlights({block}: {block: ExtractPageBuilderType<'menuHighlightsB
                     </span>
                   </div>
                 </div>
-              </article>
+              </article>) : (<article
+                key={item._id}
+                className={`group overflow-hidden rounded-xl border border-outline-variant bg-surface-container-highest ${index === 0 ? 'lg:col-span-2 lg:grid lg:grid-cols-2' : ''}`}
+              >
+                <div
+                  className={`relative flex justify-center overflow-hidden items-center min-h-80 aspect-[4/3] overflow-hidden`}
+                >
+                  <SanityPicture
+                    image={item.image}
+                    className="size-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex min-h-56 flex-col justify-between p-7">
+                  <div>
+                    <p className="eyebrow text-primary">{item.category}</p>
+                    <h3 className="mt-3 text-2xl font-bold text-primary md:text-3xl">
+                      {item.name}
+                    </h3>
+                    {item.description && (
+                      <p className="mt-3 leading-7 text-on-surface-variant">{item.description}</p>
+                    )}
+                  </div>
+                  <div className="mt-7 flex items-center justify-between">
+                    <span className="text-xl font-bold text-primary">
+                      {item.priceLabel ||
+                        (item.price ? `${item.price.toLocaleString('vi-VN')}đ` : '')}
+                    </span>
+                    <span className="grid size-11 place-items-center rounded-full bg-secondary-container text-xl text-on-secondary-container">
+                      ＋
+                    </span>
+                  </div>
+                </div>
+              </article>)
             ),
         )}
       </div>

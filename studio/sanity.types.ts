@@ -570,6 +570,22 @@ export type Settings = {
     _type: 'image'
   }
   brandName?: string
+  logoLight?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
+  logoDark?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
   logoText?: string
   navigation?: Array<{
     label: string
@@ -577,6 +593,7 @@ export type Settings = {
     _type: 'navigationItem'
     _key: string
   }>
+  mobileMenuDirection: 'left' | 'right'
   headerStatus?: string
   headerCta?: Button
   footerIntro?: string

@@ -9,7 +9,7 @@ import {Toaster} from 'sonner'
 
 import DraftModeToast from '@/app/components/DraftModeToast'
 import Footer from '@/app/components/Footer'
-import Header from '@/app/components/Header'
+import Header from '@/app/components/Header/Header'
 import ThemeToggle from '@/app/components/ThemeToggle'
 import {SanityLive} from '@/sanity/lib/live'
 import {handleError} from '@/app/client-utils'

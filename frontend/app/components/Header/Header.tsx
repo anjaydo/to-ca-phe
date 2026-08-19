@@ -3,7 +3,7 @@ import type {ReactNode} from 'react'
 
 import ResolvedLink from '@/app/components/ResolvedLink'
 import Image from '@/app/components/SanityImage'
-import MobileMenu, {fallbackNavigation} from '@/app/components/MobileMenu'
+import MobileMenu, {fallbackNavigation} from '@/app/components/Header/MobileMenu'
 import type {SettingsQueryResult} from '@/sanity.types'
 
 export default function Header({
@@ -19,7 +19,7 @@ export default function Header({
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-outline-variant bg-white dark:bg-surface-variant backdrop-blur-xl"
+      className="fixed top-0 z-50 w-full border-b border-outline-variant bg-white dark:bg-surface-variant backdrop-blur-xl"
       style={{viewTransitionName: 'site-header'}}
     >
       <div className="site-container grid min-h-20 grid-cols-[1fr_auto_1fr] items-center gap-x-3 py-2 lg:flex lg:flex-nowrap lg:justify-between lg:gap-x-5 lg:py-0">
