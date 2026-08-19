@@ -163,6 +163,36 @@ export const settings = defineType({
       initialValue: 'Tổ Cà Phê',
     }),
     defineField({
+      name: 'logoLight',
+      title: 'Logo for light theme',
+      description: 'Displayed in the header when the website uses the light theme.',
+      type: 'image',
+      options: {hotspot: true},
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+          description: 'Describe the logo for screen readers.',
+        }),
+      ],
+    }),
+    defineField({
+      name: 'logoDark',
+      title: 'Logo for dark theme',
+      description: 'Displayed in the header when the website uses the dark theme.',
+      type: 'image',
+      options: {hotspot: true},
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+          description: 'Describe the logo for screen readers.',
+        }),
+      ],
+    }),
+    defineField({
       name: 'logoText',
       title: 'Logo mark text',
       type: 'string',
@@ -184,6 +214,20 @@ export const settings = defineType({
           preview: {select: {title: 'label'}},
         }),
       ],
+    }),
+    defineField({
+      name: 'mobileMenuDirection',
+      title: 'Mobile menu opening direction',
+      type: 'string',
+      initialValue: 'left',
+      options: {
+        list: [
+          {title: 'From the left', value: 'left'},
+          {title: 'From the right', value: 'right'},
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required(),
     }),
     defineField({name: 'headerStatus', title: 'Header status badge', type: 'string'}),
     defineField({name: 'headerCta', title: 'Header call to action', type: 'button'}),

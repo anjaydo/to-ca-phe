@@ -74,6 +74,7 @@ const pageBuilderFields = /* groq */ `
 export const settingsQuery = defineQuery(`
   *[_type == "settings" && _id == "siteSettings"][0]{
     ...,
+    ogImage{...},
     navigation[]{..., link{..., ${linkReference}}},
     headerCta{${buttonFields}},
     footerGroups[]{..., links[]{..., link{..., ${linkReference}}}},

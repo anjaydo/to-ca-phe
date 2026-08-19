@@ -570,6 +570,22 @@ export type Settings = {
     _type: 'image'
   }
   brandName?: string
+  logoLight?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
+  logoDark?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
   logoText?: string
   navigation?: Array<{
     label: string
@@ -577,6 +593,7 @@ export type Settings = {
     _type: 'navigationItem'
     _key: string
   }>
+  mobileMenuDirection: 'left' | 'right'
   headerStatus?: string
   headerCta?: Button
   footerIntro?: string
@@ -986,7 +1003,7 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/lib/queries.ts
 // Variable: settingsQuery
-// Query: *[_type == "settings" && _id == "siteSettings"][0]{    ...,    navigation[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}},    headerCta{  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},    footerGroups[]{..., links[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}},    footerLocations[]->{_id, name, address, slug}  }
+// Query: *[_type == "settings" && _id == "siteSettings"][0]{    ...,    defaultSeo,    ogImage,    logoLight{..., asset->{_id, url}},    logoDark{..., asset->{_id, url}},    navigation[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}},    headerCta{  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},    footerGroups[]{..., links[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}},    footerLocations[]->{_id, name, address, slug}  }
 export type SettingsQueryResult = {
   _id: 'siteSettings'
   _type: 'settings'
@@ -1016,7 +1033,7 @@ export type SettingsQueryResult = {
     _type: 'block'
     _key: string
   }>
-  ogImage?: {
+  ogImage: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
@@ -1024,8 +1041,32 @@ export type SettingsQueryResult = {
     alt?: string
     metadataBase?: string
     _type: 'image'
-  }
+  } | null
   brandName?: string
+  logoLight: {
+    asset: {
+      _ref: string
+      _id: string
+      url: string
+    } | null
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
+  logoDark: {
+    asset: {
+      _ref: string
+      _id: string
+      url: string
+    } | null
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
   logoText?: string
   navigation: Array<{
     label: string
@@ -1040,6 +1081,7 @@ export type SettingsQueryResult = {
     _type: 'navigationItem'
     _key: string
   }> | null
+  mobileMenuDirection: 'left' | 'right'
   headerStatus?: string
   headerCta: {
     _type: 'button'
@@ -3088,7 +3130,7 @@ export type PagesSlugsResult = Array<{
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_type == "settings" && _id == "siteSettings"][0]{\n    ...,\n    navigation[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n    headerCta{\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n    footerGroups[]{..., links[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}},\n    footerLocations[]->{_id, name, address, slug}\n  }\n': SettingsQueryResult
+    '\n  *[_type == "settings" && _id == "siteSettings"][0]{\n    ...,\n    defaultSeo,\n    ogImage,\n    logoLight{..., asset->{_id, url}},\n    logoDark{..., asset->{_id, url}},\n    navigation[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n    headerCta{\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n    footerGroups[]{..., links[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}},\n    footerLocations[]->{_id, name, address, slug}\n  }\n': SettingsQueryResult
     '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    seo,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n  _key,\n  _type,\n  ...,\n  primaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  secondaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  cta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  _type == "announcementTickerBlock" => {\n    items[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  },\n  _type == "menuHighlightsBlock" => {\n    "items": items[]-> {\n      ...,\n      "category": category->name\n    }\n  },\n  locations[]->,\n  _type == "eventsBlock" => {\n    "events": select(\n      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],\n      events[]->\n    )\n  },\n  _type == "postListBlock" => {\n    "posts": select(\n      selectionMode == "manual" => posts[]->{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n},\n      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n}\n    )\n  },\n  categories[]-> {\n    ...,\n    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)\n  },\n  location->,\n  products[]->{..., ctaLink{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n  _type == "callToAction" => {\n    ...,\n    button {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n}\n  },\n  _type == "infoSection" => {\n    ...,\n    content[]{..., markDefs[]{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  }\n},\n  }\n': GetPageQueryResult
     '\n  *[_type == "homePage" && _id == "homePage"][0]{\n    _id,\n    _type,\n    name,\n    seo,\n    "pageBuilder": pageBuilder[]{\n  _key,\n  _type,\n  ...,\n  primaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  secondaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  cta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  _type == "announcementTickerBlock" => {\n    items[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  },\n  _type == "menuHighlightsBlock" => {\n    "items": items[]-> {\n      ...,\n      "category": category->name\n    }\n  },\n  locations[]->,\n  _type == "eventsBlock" => {\n    "events": select(\n      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],\n      events[]->\n    )\n  },\n  _type == "postListBlock" => {\n    "posts": select(\n      selectionMode == "manual" => posts[]->{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n},\n      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n}\n    )\n  },\n  categories[]-> {\n    ...,\n    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)\n  },\n  location->,\n  products[]->{..., ctaLink{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n  _type == "callToAction" => {\n    ...,\n    button {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n}\n  },\n  _type == "infoSection" => {\n    ...,\n    content[]{..., markDefs[]{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  }\n}\n  }\n': GetHomePageQueryResult
     '\n  *[_type == "blogPage" && _id == "blogPage"][0]{\n    _id,\n    _type,\n    name,\n    seo,\n    "pageBuilder": pageBuilder[]{\n  _key,\n  _type,\n  ...,\n  primaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  secondaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  cta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  _type == "announcementTickerBlock" => {\n    items[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  },\n  _type == "menuHighlightsBlock" => {\n    "items": items[]-> {\n      ...,\n      "category": category->name\n    }\n  },\n  locations[]->,\n  _type == "eventsBlock" => {\n    "events": select(\n      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],\n      events[]->\n    )\n  },\n  _type == "postListBlock" => {\n    "posts": select(\n      selectionMode == "manual" => posts[]->{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n},\n      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n}\n    )\n  },\n  categories[]-> {\n    ...,\n    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)\n  },\n  location->,\n  products[]->{..., ctaLink{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n  _type == "callToAction" => {\n    ...,\n    button {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n}\n  },\n  _type == "infoSection" => {\n    ...,\n    content[]{..., markDefs[]{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  }\n}\n  }\n': GetBlogPageQueryResult
