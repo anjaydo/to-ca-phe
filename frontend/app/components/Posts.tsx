@@ -1,40 +1,64 @@
 import Link from 'next/link'
+import {ArrowUpRight} from 'lucide-react'
 
 import {sanityFetch} from '@/sanity/lib/live'
 import {morePostsQuery, allPostsQuery} from '@/sanity/lib/queries'
 import {AllPostsQueryResult} from '@/sanity.types'
 import DateComponent from '@/app/components/Date'
 import OnBoarding from '@/app/components/Onboarding'
-import Avatar from '@/app/components/Avatar'
 import {dataAttr} from '@/sanity/lib/utils'
+import Image from './SanityImage'
 
 const Post = ({post}: {post: AllPostsQueryResult[number]}) => {
-  const {_id, title, slug, excerpt, date, author} = post
+  const {_id, title, slug, excerpt, date, coverImage} = post
 
   return (
     <article
-      data-sanity={dataAttr({id: _id, type: 'post', path: 'title'}).toString()}
-      key={_id}
-      className="relative flex flex-col justify-between rounded-sm border border-outline-variant bg-surface-container-low p-6 transition-colors hover:bg-surface-container-lowest"
+      className="group h-full overflow-hidden rounded-2xl border border-outline-variant bg-surface-container-low shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
     >
-      <Link className="underline transition-colors hover:text-primary" href={`/posts/${slug}`}>
-        <span className="absolute inset-0 z-10" />
-      </Link>
-      <div>
-        <h3 className="text-2xl mb-4">{title}</h3>
+      <Link className="flex h-full flex-col focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href={`/posts/${slug}`}>
+        <div
+          className="relative aspect-[16/10] overflow-hidden bg-secondary-container"
+          data-sanity={dataAttr({id: _id, type: 'post', path: 'coverImage'}).toString()}
+        >
+          {coverImage?.asset?._ref ? (
+            <Image
+              id={coverImage.asset._ref}
+              alt={coverImage.alt || ''}
+              width={720}
+              mode="cover"
+              crop={coverImage.crop}
+              hotspot={coverImage.hotspot}
+              className="size-full object-cover transition duration-700 ease-out group-hover:scale-105"
+            />
+          ) : (
+            <div className="grain grid size-full place-items-center text-6xl font-extrabold text-on-secondary-container/25" aria-hidden="true">Tổ</div>
+          )}
+          <span className="eyebrow absolute left-5 top-5 rounded-full bg-surface/90 px-3 py-2 text-primary backdrop-blur-sm">Tổ ghi chép</span>
+        </div>
 
-        <p className="line-clamp-3 max-w-[70ch] text-sm leading-6 text-on-surface-variant">{excerpt}</p>
-      </div>
-      <div className="mt-6 flex items-center justify-between border-t border-outline-variant pt-4">
-        {author && author.firstName && author.lastName && (
-          <div className="flex items-center">
-            <Avatar person={author} small={true} />
-          </div>
-        )}
-        <time className="font-mono text-xs text-on-surface-variant" dateTime={date}>
-          <DateComponent dateString={date} />
-        </time>
-      </div>
+        <div className="flex flex-1 flex-col p-6 sm:p-7">
+          <time className="eyebrow text-primary" dateTime={date}>
+            <DateComponent dateString={date} />
+          </time>
+          <h3
+            className="mt-3 text-2xl font-bold leading-tight tracking-[-0.025em] text-on-surface transition-colors group-hover:text-primary sm:text-3xl"
+            data-sanity={dataAttr({id: _id, type: 'post', path: 'title'}).toString()}
+          >
+            {title || 'Bài viết chưa có tiêu đề'}
+          </h3>
+          <p
+            className="mt-4 line-clamp-3 text-base leading-7 text-on-surface-variant"
+            data-sanity={dataAttr({id: _id, type: 'post', path: 'excerpt'}).toString()}
+          >
+            {excerpt || 'Một câu chuyện mới từ Tổ đang được hoàn thiện.'}
+          </p>
+          <span className="mt-8 inline-flex items-center gap-2 border-t border-outline-variant pt-5 text-sm font-bold text-primary">
+            Đọc câu chuyện
+            <ArrowUpRight aria-hidden="true" className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      </Link>
     </article>
   )
 }
@@ -51,7 +75,7 @@ const Posts = ({
   <div>
     {heading && <h2 className="text-3xl text-primary sm:text-4xl lg:text-5xl">{heading}</h2>}
     {subHeading && <p className="mt-2 text-lg leading-8 text-on-surface-variant">{subHeading}</p>}
-    <div className="pt-6 space-y-6">{children}</div>
+    <div className="grid gap-6 pt-10 md:grid-cols-2">{children}</div>
   </div>
 )
 
@@ -66,7 +90,7 @@ export const MorePosts = async ({skip, limit}: {skip: string; limit: number}) =>
   }
 
   return (
-    <Posts heading={`Recent Posts (${data?.length})`}>
+    <Posts heading="Đọc tiếp ở Tổ">
       {data?.map((post: AllPostsQueryResult[number]) => (
         <Post key={post._id} post={post} />
       ))}

@@ -1,24 +1,18 @@
 import type {Metadata} from 'next'
-import Head from 'next/head'
+import {notFound} from 'next/navigation'
 
 import PageBuilderPage from '@/app/components/PageBuilder'
 import {sanityFetch} from '@/sanity/lib/live'
-import {getPageQuery, pagesSlugs} from '@/sanity/lib/queries'
-import {GetPageQueryResult} from '@/sanity.types'
-import {PageOnboarding} from '@/app/components/Onboarding'
+import {getPageQuery, pageMetadataQuery, pagesSlugs, settingsQuery} from '@/sanity/lib/queries'
+import {resolveOpenGraphImage} from '@/sanity/lib/utils'
+import {client} from '@/sanity/lib/client'
 
 /**
  * Generate the static params for the page.
  * Learn more: https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  */
 export async function generateStaticParams() {
-  const {data} = await sanityFetch({
-    query: pagesSlugs,
-    // // Use the published perspective in generateStaticParams
-    perspective: 'published',
-    stega: false,
-  })
-  return data
+  return client.withConfig({useCdn: false, perspective: 'published', stega: false}).fetch(pagesSlugs)
 }
 
 /**
@@ -27,49 +21,25 @@ export async function generateStaticParams() {
  */
 export async function generateMetadata(props: PageProps<'/[slug]'>): Promise<Metadata> {
   const params = await props.params
-  const {data: page} = await sanityFetch({
-    query: getPageQuery,
-    params,
-    // Metadata should never contain stega
-    stega: false,
-  })
+  const [{data: page}, {data: settings}] = await Promise.all([
+    sanityFetch({query: pageMetadataQuery, params, stega: false}),
+    sanityFetch({query: settingsQuery, stega: false}),
+  ])
+
+  const seo = page?.seo || settings?.defaultSeo
 
   return {
-    title: page?.name,
-    description: page?.heading,
+    title: seo?.metaTitle || page?.name,
+    description: seo?.metaDescription || settings?.footerIntro,
+    openGraph: {images: resolveOpenGraphImage(seo?.openGraphImage || settings?.ogImage)},
   } satisfies Metadata
 }
 
 export default async function Page(props: PageProps<'/[slug]'>) {
   const params = await props.params
-  const [{data: page}] = await Promise.all([sanityFetch({query: getPageQuery, params})])
+  const {data: page} = await sanityFetch({query: getPageQuery, params})
 
-  if (!page?._id) {
-    return (
-      <div className="py-40">
-        <PageOnboarding />
-      </div>
-    )
-  }
+  if (!page?._id) notFound()
 
-  return (
-    <div className="my-12 lg:my-24">
-      <Head>
-        <title>{page.heading}</title>
-      </Head>
-      <div className="">
-        <div className="container">
-          <div className="border-b border-outline-variant pb-6">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl text-primary sm:text-5xl lg:text-7xl">{page.heading}</h1>
-              <p className="mt-4 text-base font-light uppercase leading-relaxed text-on-surface-variant lg:text-lg">
-                {page.subheading}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <PageBuilderPage page={page as GetPageQueryResult} />
-    </div>
-  )
+  return <PageBuilderPage page={page} />
 }

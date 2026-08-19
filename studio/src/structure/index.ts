@@ -1,4 +1,4 @@
-import {Settings as SettingsIcon} from 'lucide-react'
+import {Newspaper, Settings as SettingsIcon} from 'lucide-react'
 import type {StructureBuilder, StructureResolver} from 'sanity/structure'
 import pluralize from 'pluralize-esm'
 
@@ -8,7 +8,7 @@ import pluralize from 'pluralize-esm'
  * Learn more: https://www.sanity.io/docs/structure-builder-introduction
  */
 
-const DISABLED_TYPES = ['settings', 'assist.instruction.context']
+const DISABLED_TYPES = ['settings', 'homePage', 'blogPage', 'assist.instruction.context']
 
 export const structure: StructureResolver = (S: StructureBuilder) =>
   S.list()
@@ -22,6 +22,13 @@ export const structure: StructureResolver = (S: StructureBuilder) =>
           return listItem.title(pluralize(listItem.getTitle() as string))
         }),
       // Settings Singleton in order to view/edit the one particular document for Settings.  Learn more about Singletons: https://www.sanity.io/docs/create-a-link-to-a-single-edit-page-in-your-main-document-type-list
+      S.listItem()
+        .title('Home Page')
+        .child(S.document().schemaType('homePage').documentId('homePage')),
+      S.listItem()
+        .title('Blog Page')
+        .child(S.document().schemaType('blogPage').documentId('blogPage'))
+        .icon(Newspaper),
       S.listItem()
         .title('Site Settings')
         .child(S.document().schemaType('settings').documentId('siteSettings'))

@@ -15,11 +15,22 @@
 export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: ../sanity.schema.json
-export type PageReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'page'
+export type RichTextBlock = {
+  _type: 'richTextBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  content?: BlockContent
+}
+
+export type CallToActionBlock = {
+  _type: 'callToActionBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  theme?: 'surface' | 'secondary' | 'dark'
+  image?: AccessibleImage
+  cta?: Button
 }
 
 export type PostReference = {
@@ -29,13 +40,267 @@ export type PostReference = {
   [internalGroqTypeReferenceTo]?: 'post'
 }
 
-export type Link = {
-  _type: 'link'
-  linkType?: 'href' | 'page' | 'post'
-  href?: string
-  page?: PageReference
-  post?: PostReference
-  openInNewTab?: boolean
+export type PostListBlock = {
+  _type: 'postListBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  selectionMode: 'latest' | 'manual'
+  posts?: Array<
+    {
+      _key: string
+    } & PostReference
+  >
+  limit: number
+  layout: 'editorialGrid' | 'compactList'
+}
+
+export type ProductReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'product'
+}
+
+export type ProductsBlock = {
+  _type: 'productsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  products: Array<
+    {
+      _key: string
+    } & ProductReference
+  >
+}
+
+export type TimelineBlock = {
+  _type: 'timelineBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  milestones: Array<{
+    dateLabel: string
+    title: string
+    body?: string
+    image: AccessibleImage
+    _type: 'milestone'
+    _key: string
+  }>
+}
+
+export type SplitStoryBlock = {
+  _type: 'splitStoryBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  theme?: 'surface' | 'secondary'
+  primaryImage?: AccessibleImage
+  secondaryImage?: AccessibleImage
+  cta?: Button
+}
+
+export type LocationReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'location'
+}
+
+export type AvailabilityBlock = {
+  _type: 'availabilityBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  image?: AccessibleImage
+  location?: LocationReference
+  percent: number
+  lowLabel?: string
+  highLabel?: string
+  cta?: Button
+}
+
+export type FeatureGridBlock = {
+  _type: 'featureGridBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  variant?: 'cards' | 'compactAmenities'
+  features: Array<{
+    icon?: 'square' | 'users' | 'sun' | 'snowflake' | 'wifi' | 'cookie' | 'plug' | 'sparkles'
+    title: string
+    description?: string
+    _type: 'feature'
+    _key: string
+  }>
+}
+
+export type MediaFeatureBlock = {
+  _type: 'mediaFeatureBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  image: AccessibleImage
+  badge?: string
+}
+
+export type EventReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'event'
+}
+
+export type EventsBlock = {
+  _type: 'eventsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  selectionMode?: 'manual' | 'upcoming'
+  events?: Array<
+    {
+      _key: string
+    } & EventReference
+  >
+  limit?: number
+  cta?: Button
+}
+
+export type LocationsBlock = {
+  _type: 'locationsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  variant?: 'cards' | 'alternatingDetails'
+  locations: Array<
+    {
+      _key: string
+    } & LocationReference
+  >
+  cta?: Button
+}
+
+export type MenuCategoryReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'menuCategory'
+}
+
+export type MenuCatalogBlock = {
+  _type: 'menuCatalogBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  categories: Array<
+    {
+      _key: string
+    } & MenuCategoryReference
+  >
+}
+
+export type MenuItemReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'menuItem'
+}
+
+export type MenuHighlightsBlock = {
+  _type: 'menuHighlightsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  items: Array<
+    {
+      _key: string
+    } & MenuItemReference
+  >
+  cta?: Button
+}
+
+export type AnnouncementTickerBlock = {
+  _type: 'announcementTickerBlock'
+  items: Array<{
+    text: string
+    link?: Link
+    _type: 'announcement'
+    _key: string
+  }>
+}
+
+export type HeroBlock = {
+  _type: 'heroBlock'
+  variant: 'standard' | 'immersive'
+  eyebrow?: string
+  heading: string
+  accentHeading?: string
+  description?: string
+  image?: AccessibleImage
+  badge?: string
+  primaryCta?: Button
+  secondaryCta?: Button
+}
+
+export type PageBuilder = Array<
+  | ({
+      _key: string
+    } & HeroBlock)
+  | ({
+      _key: string
+    } & AnnouncementTickerBlock)
+  | ({
+      _key: string
+    } & MenuHighlightsBlock)
+  | ({
+      _key: string
+    } & MenuCatalogBlock)
+  | ({
+      _key: string
+    } & LocationsBlock)
+  | ({
+      _key: string
+    } & EventsBlock)
+  | ({
+      _key: string
+    } & MediaFeatureBlock)
+  | ({
+      _key: string
+    } & FeatureGridBlock)
+  | ({
+      _key: string
+    } & AvailabilityBlock)
+  | ({
+      _key: string
+    } & SplitStoryBlock)
+  | ({
+      _key: string
+    } & TimelineBlock)
+  | ({
+      _key: string
+    } & ProductsBlock)
+  | ({
+      _key: string
+    } & PostListBlock)
+  | ({
+      _key: string
+    } & CallToActionBlock)
+  | ({
+      _key: string
+    } & RichTextBlock)
+  | ({
+      _key: string
+    } & CallToAction)
+  | ({
+      _key: string
+    } & InfoSection)
+>
+
+export type Seo = {
+  _type: 'seo'
+  metaTitle?: string
+  metaDescription?: string
+  openGraphImage?: AccessibleImage
 }
 
 export type SanityImageAssetReference = {
@@ -43,6 +308,31 @@ export type SanityImageAssetReference = {
   _type: 'reference'
   _weak?: boolean
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
+
+export type AccessibleImage = {
+  _type: 'accessibleImage'
+  asset?: SanityImageAssetReference
+  media?: unknown
+  hotspot?: SanityImageHotspot
+  crop?: SanityImageCrop
+  alt: string
+}
+
+export type PageReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'page'
+}
+
+export type Link = {
+  _type: 'link'
+  linkType?: 'href' | 'page' | 'post'
+  href?: string
+  page?: PageReference
+  post?: PostReference
+  openInNewTab?: boolean
 }
 
 export type CallToAction = {
@@ -127,6 +417,120 @@ export type Button = {
   link?: Link
 }
 
+export type Product = {
+  _id: string
+  _type: 'product'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  label?: string
+  description?: string
+  price?: number
+  priceLabel?: string
+  image: AccessibleImage
+  ctaLabel?: string
+  ctaLink?: Link
+  migrationKey?: string
+}
+
+export type Event = {
+  _id: string
+  _type: 'event'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  category?: string
+  dateLabel?: string
+  startsAt?: string
+  endsAt?: string
+  description?: string
+  image: AccessibleImage
+  registrationLink?: Link
+  migrationKey?: string
+}
+
+export type MenuItem = {
+  _id: string
+  _type: 'menuItem'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  category: MenuCategoryReference
+  description?: string
+  price?: number
+  priceLabel?: string
+  image?: AccessibleImage
+  status?: 'available' | 'hidden'
+  migrationKey?: string
+}
+
+export type MenuCategory = {
+  _id: string
+  _type: 'menuCategory'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  description?: string
+  order?: number
+  migrationKey?: string
+}
+
+export type Location = {
+  _id: string
+  _type: 'location'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  label?: string
+  address: string
+  shortDescription?: string
+  description?: string
+  hours?: string
+  image: AccessibleImage
+  bookingLink?: Link
+  availabilityLabel?: string
+  availabilityPercent?: number
+  migrationKey?: string
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
+}
+
+export type BlogPage = {
+  _id: string
+  _type: 'blogPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  seo?: Seo
+  pageBuilder: PageBuilder
+}
+
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  seo?: Seo
+  pageBuilder: PageBuilder
+}
+
 export type Settings = {
   _id: string
   _type: 'settings'
@@ -165,6 +569,36 @@ export type Settings = {
     metadataBase?: string
     _type: 'image'
   }
+  brandName?: string
+  logoText?: string
+  navigation?: Array<{
+    label: string
+    link: Link
+    _type: 'navigationItem'
+    _key: string
+  }>
+  headerStatus?: string
+  headerCta?: Button
+  footerIntro?: string
+  footerGroups?: Array<{
+    title: string
+    links?: Array<{
+      label: string
+      link: Link
+      _type: 'footerLink'
+      _key: string
+    }>
+    _type: 'footerGroup'
+    _key: string
+  }>
+  footerLocations?: Array<
+    {
+      _key: string
+    } & LocationReference
+  >
+  contactEmail?: string
+  copyright?: string
+  defaultSeo?: Seo
 }
 
 export type SanityImageCrop = {
@@ -191,16 +625,11 @@ export type Page = {
   _rev: string
   name: string
   slug: Slug
-  heading: string
+  seo?: Seo
+  heading?: string
   subheading?: string
-  pageBuilder?: Array<
-    | ({
-        _key: string
-      } & CallToAction)
-    | ({
-        _key: string
-      } & InfoSection)
-  >
+  pageBuilder: PageBuilder
+  migrationKey?: string
 }
 
 export type PersonReference = {
@@ -216,6 +645,7 @@ export type Post = {
   _createdAt: string
   _updatedAt: string
   _rev: string
+  migrationKey?: string
   title: string
   slug: Slug
   content?: BlockContent
@@ -248,12 +678,6 @@ export type Person = {
     alt?: string
     _type: 'image'
   }
-}
-
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
 }
 
 export type SanityAssistInstructionTask = {
@@ -491,15 +915,46 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
-  | PageReference
+  | RichTextBlock
+  | CallToActionBlock
   | PostReference
-  | Link
+  | PostListBlock
+  | ProductReference
+  | ProductsBlock
+  | TimelineBlock
+  | SplitStoryBlock
+  | LocationReference
+  | AvailabilityBlock
+  | FeatureGridBlock
+  | MediaFeatureBlock
+  | EventReference
+  | EventsBlock
+  | LocationsBlock
+  | MenuCategoryReference
+  | MenuCatalogBlock
+  | MenuItemReference
+  | MenuHighlightsBlock
+  | AnnouncementTickerBlock
+  | HeroBlock
+  | PageBuilder
+  | Seo
   | SanityImageAssetReference
+  | AccessibleImage
+  | PageReference
+  | Link
   | CallToAction
   | InfoSection
   | BlockContentTextOnly
   | BlockContent
   | Button
+  | Product
+  | Event
+  | MenuItem
+  | MenuCategory
+  | Location
+  | Slug
+  | BlogPage
+  | HomePage
   | Settings
   | SanityImageCrop
   | SanityImageHotspot
@@ -507,7 +962,6 @@ export type AllSanitySchemaTypes =
   | PersonReference
   | Post
   | Person
-  | Slug
   | SanityAssistInstructionTask
   | SanityAssistTaskStatus
   | SanityAssistSchemaTypeAnnotations

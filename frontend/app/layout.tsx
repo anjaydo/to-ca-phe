@@ -13,6 +13,8 @@ import Header from '@/app/components/Header'
 import ThemeToggle from '@/app/components/ThemeToggle'
 import {SanityLive} from '@/sanity/lib/live'
 import {handleError} from '@/app/client-utils'
+import {sanityFetch} from '@/sanity/lib/live'
+import {settingsQuery} from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
   title: {
@@ -43,6 +45,7 @@ const jetBrainsMono = JetBrains_Mono({
 
 export default async function RootLayout({children}: LayoutProps<'/'>) {
   const {isEnabled: isDraftMode} = await draftMode()
+  const {data: settings} = await sanityFetch({query: settingsQuery})
 
   return (
     <html
@@ -71,9 +74,9 @@ export default async function RootLayout({children}: LayoutProps<'/'>) {
           )}
           {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
           <SanityLive onError={handleError} />
-          <Header themeToggle={<ThemeToggle />} />
+          <Header themeToggle={<ThemeToggle />} settings={settings} />
           <main className="">{children}</main>
-          <Footer />
+          <Footer settings={settings} />
         </section>
         <SpeedInsights />
       </body>

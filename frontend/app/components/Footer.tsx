@@ -1,73 +1,9 @@
 import Link from 'next/link'
-import {ExternalLink} from 'lucide-react'
 
-export default function Footer() {
-  return (
-    <footer className="border-t border-outline-variant bg-surface-dim py-14 text-on-surface">
-      <div className="site-container grid gap-12 sm:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
-        <div>
-          <Link href="/" className="text-2xl font-bold text-primary">
-            Tổ Cà Phê
-          </Link>
-          <p className="mt-4 max-w-sm leading-7 text-on-surface-variant">
-            A modern organic space for coffee, matcha, deep work, and community in Đà Nẵng.
-          </p>
-          <p className="eyebrow mt-8 text-outline">© 2026 Tổ Cà Phê</p>
-        </div>
-        <div>
-          <p className="eyebrow mb-4 text-primary">Explore</p>
-          <div className="flex flex-col items-start gap-3 text-sm text-on-surface-variant">
-            <Link href="/menu" className="hover:text-primary">
-              Menu
-            </Link>
-            <Link href="/coworking" className="hover:text-primary">
-              Co-working
-            </Link>
-            <Link href="/journey" className="hover:text-primary">
-              Our journey
-            </Link>
-            <Link href="/merchandise" className="hover:text-primary">
-              Merchandise
-            </Link>
-          </div>
-        </div>
-        <div>
-          <p className="eyebrow mb-4 text-primary">Visit</p>
-          <ul className="space-y-3 text-sm text-on-surface-variant">
-            <li>59 Lê Lợi</li>
-            <li>80A Nguyễn Chí Thanh</li>
-            <li>357 Nguyễn Tất Thành</li>
-          </ul>
-        </div>
-        <div>
-          <p className="eyebrow mb-4 text-primary">Patterns</p>
-          <div className="flex flex-col items-start gap-3 text-sm text-on-surface-variant">
-            <Link href="/patterns/bauhaus-grid" className="hover:text-primary">
-              Bauhaus Grid
-            </Link>
-            <Link href="/patterns/electric-wave" className="hover:text-primary">
-              Electric Wave
-            </Link>
-            <Link href="/patterns/organic-rhythm" className="hover:text-primary">
-              Organic Rhythm
-            </Link>
-          </div>
-        </div>
-        <div>
-          <p className="eyebrow mb-4 text-primary">Connect</p>
-          <div className="flex flex-col items-start gap-3 text-sm text-on-surface-variant">
-            <a href="#" className="inline-flex items-center gap-1.5 hover:text-primary">
-              Instagram <ExternalLink aria-hidden="true" className="size-3.5" />
-            </a>
-            <a href="#" className="inline-flex items-center gap-1.5 hover:text-primary">
-              Facebook <ExternalLink aria-hidden="true" className="size-3.5" />
-            </a>
-            <a href="mailto:hello@tocaphe.vn" className="hover:text-primary">
-              hello@tocaphe.vn
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
+import ResolvedLink from '@/app/components/ResolvedLink'
+import type {SettingsQueryResult} from '@/sanity.types'
+
+export default function Footer({settings}: {settings: SettingsQueryResult}) {
+  const hasConnectGroup = settings?.footerGroups?.some((group) => group._key === 'connect')
+  return <footer className="border-t border-outline-variant bg-surface-dim py-14 text-on-surface"><div className="site-container grid gap-12 sm:grid-cols-2 xl:grid-cols-[1.4fr_repeat(4,1fr)]"><div><Link href="/" className="text-2xl font-bold text-primary">{settings?.brandName || 'Tổ Cà Phê'}</Link><p className="mt-4 max-w-sm leading-7 text-on-surface-variant">{settings?.footerIntro || 'A modern organic space for coffee, matcha, deep work, and community in Đà Nẵng.'}</p><p className="eyebrow mt-8 text-outline">{settings?.copyright || `© ${new Date().getFullYear()} Tổ Cà Phê`}</p></div>{settings?.footerGroups?.map((group) => <div key={group._key}><p className="eyebrow mb-4 text-primary">{group.title}</p><div className="flex flex-col items-start gap-3 text-sm text-on-surface-variant">{group.links?.map((item) => item.link && <ResolvedLink key={item._key} link={item.link} className="hover:text-primary">{item.label}</ResolvedLink>)}{group._key === 'connect' && settings.contactEmail && <a href={`mailto:${settings.contactEmail}`} className="hover:text-primary">{settings.contactEmail}</a>}</div></div>)}{settings?.footerLocations?.length ? <div><p className="eyebrow mb-4 text-primary">Visit</p><ul className="space-y-3 text-sm text-on-surface-variant">{settings.footerLocations.map((location) => <li key={location._id}>{location.name}</li>)}</ul></div> : null}{!hasConnectGroup && settings?.contactEmail && <div><p className="eyebrow mb-4 text-primary">Connect</p><a href={`mailto:${settings.contactEmail}`} className="text-sm text-on-surface-variant hover:text-primary">{settings.contactEmail}</a></div>}</div></footer>
 }

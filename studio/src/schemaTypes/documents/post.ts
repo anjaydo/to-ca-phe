@@ -15,6 +15,13 @@ export const post = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'migrationKey',
+      title: 'Migration key',
+      type: 'string',
+      hidden: true,
+      readOnly: true,
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',

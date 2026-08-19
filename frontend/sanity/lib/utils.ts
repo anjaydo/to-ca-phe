@@ -3,6 +3,7 @@ import {dataset, projectId, studioUrl} from '@/sanity/lib/api'
 import {createDataAttribute, CreateDataAttributeProps} from 'next-sanity'
 import {createImageUrlBuilder, type SanityImageSource} from '@sanity/image-url'
 import {DereferencedLink} from '@/sanity/lib/types'
+import {stegaClean} from '@sanity/client/stega'
 
 const builder = createImageUrlBuilder({
   projectId: projectId || '',
@@ -30,21 +31,19 @@ export function resolveOpenGraphImage(
 export function linkResolver(link: Link | DereferencedLink | undefined) {
   if (!link) return null
 
-  // If linkType is not set but href is, lets set linkType to "href".  This comes into play when pasting links into the portable text editor because a link type is not assumed.
-  if (!link.linkType && link.href) {
-    link.linkType = 'href'
-  }
+  // Link fields can contain Stega metadata in Presentation mode. Clean values used for routing logic.
+  const linkType = stegaClean(link.linkType) || (link.href ? 'href' : undefined)
 
-  switch (link.linkType) {
+  switch (linkType) {
     case 'href':
-      return link.href || null
+      return stegaClean(link.href) || null
     case 'page':
       if (link?.page && typeof link.page === 'string') {
-        return `/${link.page}`
+        return `/${stegaClean(link.page)}`
       }
     case 'post':
       if (link?.post && typeof link.post === 'string') {
-        return `/posts/${link.post}`
+        return `/posts/${stegaClean(link.post)}`
       }
     default:
       return null

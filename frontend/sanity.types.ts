@@ -15,11 +15,22 @@
 export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: ../sanity.schema.json
-export type PageReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'page'
+export type RichTextBlock = {
+  _type: 'richTextBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  content?: BlockContent
+}
+
+export type CallToActionBlock = {
+  _type: 'callToActionBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  theme?: 'surface' | 'secondary' | 'dark'
+  image?: AccessibleImage
+  cta?: Button
 }
 
 export type PostReference = {
@@ -29,13 +40,267 @@ export type PostReference = {
   [internalGroqTypeReferenceTo]?: 'post'
 }
 
-export type Link = {
-  _type: 'link'
-  linkType?: 'href' | 'page' | 'post'
-  href?: string
-  page?: PageReference
-  post?: PostReference
-  openInNewTab?: boolean
+export type PostListBlock = {
+  _type: 'postListBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  selectionMode: 'latest' | 'manual'
+  posts?: Array<
+    {
+      _key: string
+    } & PostReference
+  >
+  limit: number
+  layout: 'editorialGrid' | 'compactList'
+}
+
+export type ProductReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'product'
+}
+
+export type ProductsBlock = {
+  _type: 'productsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  products: Array<
+    {
+      _key: string
+    } & ProductReference
+  >
+}
+
+export type TimelineBlock = {
+  _type: 'timelineBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  milestones: Array<{
+    dateLabel: string
+    title: string
+    body?: string
+    image: AccessibleImage
+    _type: 'milestone'
+    _key: string
+  }>
+}
+
+export type SplitStoryBlock = {
+  _type: 'splitStoryBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  theme?: 'surface' | 'secondary'
+  primaryImage?: AccessibleImage
+  secondaryImage?: AccessibleImage
+  cta?: Button
+}
+
+export type LocationReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'location'
+}
+
+export type AvailabilityBlock = {
+  _type: 'availabilityBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  image?: AccessibleImage
+  location?: LocationReference
+  percent: number
+  lowLabel?: string
+  highLabel?: string
+  cta?: Button
+}
+
+export type FeatureGridBlock = {
+  _type: 'featureGridBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  variant?: 'cards' | 'compactAmenities'
+  features: Array<{
+    icon?: 'square' | 'users' | 'sun' | 'snowflake' | 'wifi' | 'cookie' | 'plug' | 'sparkles'
+    title: string
+    description?: string
+    _type: 'feature'
+    _key: string
+  }>
+}
+
+export type MediaFeatureBlock = {
+  _type: 'mediaFeatureBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  image: AccessibleImage
+  badge?: string
+}
+
+export type EventReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'event'
+}
+
+export type EventsBlock = {
+  _type: 'eventsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  selectionMode?: 'manual' | 'upcoming'
+  events?: Array<
+    {
+      _key: string
+    } & EventReference
+  >
+  limit?: number
+  cta?: Button
+}
+
+export type LocationsBlock = {
+  _type: 'locationsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  variant?: 'cards' | 'alternatingDetails'
+  locations: Array<
+    {
+      _key: string
+    } & LocationReference
+  >
+  cta?: Button
+}
+
+export type MenuCategoryReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'menuCategory'
+}
+
+export type MenuCatalogBlock = {
+  _type: 'menuCatalogBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  categories: Array<
+    {
+      _key: string
+    } & MenuCategoryReference
+  >
+}
+
+export type MenuItemReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'menuItem'
+}
+
+export type MenuHighlightsBlock = {
+  _type: 'menuHighlightsBlock'
+  eyebrow?: string
+  heading?: string
+  intro?: string
+  items: Array<
+    {
+      _key: string
+    } & MenuItemReference
+  >
+  cta?: Button
+}
+
+export type AnnouncementTickerBlock = {
+  _type: 'announcementTickerBlock'
+  items: Array<{
+    text: string
+    link?: Link
+    _type: 'announcement'
+    _key: string
+  }>
+}
+
+export type HeroBlock = {
+  _type: 'heroBlock'
+  variant: 'standard' | 'immersive'
+  eyebrow?: string
+  heading: string
+  accentHeading?: string
+  description?: string
+  image?: AccessibleImage
+  badge?: string
+  primaryCta?: Button
+  secondaryCta?: Button
+}
+
+export type PageBuilder = Array<
+  | ({
+      _key: string
+    } & HeroBlock)
+  | ({
+      _key: string
+    } & AnnouncementTickerBlock)
+  | ({
+      _key: string
+    } & MenuHighlightsBlock)
+  | ({
+      _key: string
+    } & MenuCatalogBlock)
+  | ({
+      _key: string
+    } & LocationsBlock)
+  | ({
+      _key: string
+    } & EventsBlock)
+  | ({
+      _key: string
+    } & MediaFeatureBlock)
+  | ({
+      _key: string
+    } & FeatureGridBlock)
+  | ({
+      _key: string
+    } & AvailabilityBlock)
+  | ({
+      _key: string
+    } & SplitStoryBlock)
+  | ({
+      _key: string
+    } & TimelineBlock)
+  | ({
+      _key: string
+    } & ProductsBlock)
+  | ({
+      _key: string
+    } & PostListBlock)
+  | ({
+      _key: string
+    } & CallToActionBlock)
+  | ({
+      _key: string
+    } & RichTextBlock)
+  | ({
+      _key: string
+    } & CallToAction)
+  | ({
+      _key: string
+    } & InfoSection)
+>
+
+export type Seo = {
+  _type: 'seo'
+  metaTitle?: string
+  metaDescription?: string
+  openGraphImage?: AccessibleImage
 }
 
 export type SanityImageAssetReference = {
@@ -43,6 +308,31 @@ export type SanityImageAssetReference = {
   _type: 'reference'
   _weak?: boolean
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
+
+export type AccessibleImage = {
+  _type: 'accessibleImage'
+  asset?: SanityImageAssetReference
+  media?: unknown
+  hotspot?: SanityImageHotspot
+  crop?: SanityImageCrop
+  alt: string
+}
+
+export type PageReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'page'
+}
+
+export type Link = {
+  _type: 'link'
+  linkType?: 'href' | 'page' | 'post'
+  href?: string
+  page?: PageReference
+  post?: PostReference
+  openInNewTab?: boolean
 }
 
 export type CallToAction = {
@@ -127,6 +417,120 @@ export type Button = {
   link?: Link
 }
 
+export type Product = {
+  _id: string
+  _type: 'product'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  label?: string
+  description?: string
+  price?: number
+  priceLabel?: string
+  image: AccessibleImage
+  ctaLabel?: string
+  ctaLink?: Link
+  migrationKey?: string
+}
+
+export type Event = {
+  _id: string
+  _type: 'event'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  category?: string
+  dateLabel?: string
+  startsAt?: string
+  endsAt?: string
+  description?: string
+  image: AccessibleImage
+  registrationLink?: Link
+  migrationKey?: string
+}
+
+export type MenuItem = {
+  _id: string
+  _type: 'menuItem'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  category: MenuCategoryReference
+  description?: string
+  price?: number
+  priceLabel?: string
+  image?: AccessibleImage
+  status?: 'available' | 'hidden'
+  migrationKey?: string
+}
+
+export type MenuCategory = {
+  _id: string
+  _type: 'menuCategory'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  description?: string
+  order?: number
+  migrationKey?: string
+}
+
+export type Location = {
+  _id: string
+  _type: 'location'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug: Slug
+  label?: string
+  address: string
+  shortDescription?: string
+  description?: string
+  hours?: string
+  image: AccessibleImage
+  bookingLink?: Link
+  availabilityLabel?: string
+  availabilityPercent?: number
+  migrationKey?: string
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
+}
+
+export type BlogPage = {
+  _id: string
+  _type: 'blogPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  seo?: Seo
+  pageBuilder: PageBuilder
+}
+
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  seo?: Seo
+  pageBuilder: PageBuilder
+}
+
 export type Settings = {
   _id: string
   _type: 'settings'
@@ -165,6 +569,36 @@ export type Settings = {
     metadataBase?: string
     _type: 'image'
   }
+  brandName?: string
+  logoText?: string
+  navigation?: Array<{
+    label: string
+    link: Link
+    _type: 'navigationItem'
+    _key: string
+  }>
+  headerStatus?: string
+  headerCta?: Button
+  footerIntro?: string
+  footerGroups?: Array<{
+    title: string
+    links?: Array<{
+      label: string
+      link: Link
+      _type: 'footerLink'
+      _key: string
+    }>
+    _type: 'footerGroup'
+    _key: string
+  }>
+  footerLocations?: Array<
+    {
+      _key: string
+    } & LocationReference
+  >
+  contactEmail?: string
+  copyright?: string
+  defaultSeo?: Seo
 }
 
 export type SanityImageCrop = {
@@ -191,16 +625,11 @@ export type Page = {
   _rev: string
   name: string
   slug: Slug
-  heading: string
+  seo?: Seo
+  heading?: string
   subheading?: string
-  pageBuilder?: Array<
-    | ({
-        _key: string
-      } & CallToAction)
-    | ({
-        _key: string
-      } & InfoSection)
-  >
+  pageBuilder: PageBuilder
+  migrationKey?: string
 }
 
 export type PersonReference = {
@@ -216,6 +645,7 @@ export type Post = {
   _createdAt: string
   _updatedAt: string
   _rev: string
+  migrationKey?: string
   title: string
   slug: Slug
   content?: BlockContent
@@ -248,12 +678,6 @@ export type Person = {
     alt?: string
     _type: 'image'
   }
-}
-
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
 }
 
 export type SanityAssistInstructionTask = {
@@ -491,15 +915,46 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
-  | PageReference
+  | RichTextBlock
+  | CallToActionBlock
   | PostReference
-  | Link
+  | PostListBlock
+  | ProductReference
+  | ProductsBlock
+  | TimelineBlock
+  | SplitStoryBlock
+  | LocationReference
+  | AvailabilityBlock
+  | FeatureGridBlock
+  | MediaFeatureBlock
+  | EventReference
+  | EventsBlock
+  | LocationsBlock
+  | MenuCategoryReference
+  | MenuCatalogBlock
+  | MenuItemReference
+  | MenuHighlightsBlock
+  | AnnouncementTickerBlock
+  | HeroBlock
+  | PageBuilder
+  | Seo
   | SanityImageAssetReference
+  | AccessibleImage
+  | PageReference
+  | Link
   | CallToAction
   | InfoSection
   | BlockContentTextOnly
   | BlockContent
   | Button
+  | Product
+  | Event
+  | MenuItem
+  | MenuCategory
+  | Location
+  | Slug
+  | BlogPage
+  | HomePage
   | Settings
   | SanityImageCrop
   | SanityImageHotspot
@@ -507,7 +962,6 @@ export type AllSanitySchemaTypes =
   | PersonReference
   | Post
   | Person
-  | Slug
   | SanityAssistInstructionTask
   | SanityAssistTaskStatus
   | SanityAssistSchemaTypeAnnotations
@@ -532,9 +986,9 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/lib/queries.ts
 // Variable: settingsQuery
-// Query: *[_type == "settings"][0]
+// Query: *[_type == "settings" && _id == "siteSettings"][0]{    ...,    navigation[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}},    headerCta{  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},    footerGroups[]{..., links[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}},    footerLocations[]->{_id, name, address, slug}  }
 export type SettingsQueryResult = {
-  _id: string
+  _id: 'siteSettings'
   _type: 'settings'
   _createdAt: string
   _updatedAt: string
@@ -571,19 +1025,147 @@ export type SettingsQueryResult = {
     metadataBase?: string
     _type: 'image'
   }
+  brandName?: string
+  logoText?: string
+  navigation: Array<{
+    label: string
+    link: {
+      _type: 'link'
+      linkType?: 'href' | 'page' | 'post'
+      href?: string
+      page: string | null
+      post: string | null
+      openInNewTab?: boolean
+    }
+    _type: 'navigationItem'
+    _key: string
+  }> | null
+  headerStatus?: string
+  headerCta: {
+    _type: 'button'
+    buttonText?: string
+    link: {
+      _type: 'link'
+      linkType?: 'href' | 'page' | 'post'
+      href?: string
+      page: string | null
+      post: string | null
+      openInNewTab?: boolean
+    } | null
+  } | null
+  footerIntro?: string
+  footerGroups: Array<{
+    title: string
+    links: Array<{
+      label: string
+      link: {
+        _type: 'link'
+        linkType?: 'href' | 'page' | 'post'
+        href?: string
+        page: string | null
+        post: string | null
+        openInNewTab?: boolean
+      }
+      _type: 'footerLink'
+      _key: string
+    }> | null
+    _type: 'footerGroup'
+    _key: string
+  }> | null
+  footerLocations: Array<{
+    _id: string
+    name: string
+    address: string
+    slug: Slug
+  }> | null
+  contactEmail?: string
+  copyright?: string
+  defaultSeo?: Seo
 } | null
 
 // Source: sanity/lib/queries.ts
 // Variable: getPageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    name,    slug,    heading,    subheading,    "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,        button {          ...,            link {      ...,        _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }      }        }      },      _type == "infoSection" => {        content[]{          ...,          markDefs[]{            ...,              _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }          }        }      },    },  }
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    name,    slug,    seo,    heading,    subheading,    "pageBuilder": pageBuilder[]{  _key,  _type,  ...,  primaryCta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  secondaryCta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  cta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  _type == "announcementTickerBlock" => {    items[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}  },  _type == "menuHighlightsBlock" => {    "items": items[]-> {      ...,      "category": category->name    }  },  locations[]->,  _type == "eventsBlock" => {    "events": select(      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],      events[]->    )  },  _type == "postListBlock" => {    "posts": select(      selectionMode == "manual" => posts[]->{  _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},},      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{  _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},}    )  },  categories[]-> {    ...,    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)  },  location->,  products[]->{..., ctaLink{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}},  _type == "callToAction" => {    ...,    button {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }}  },  _type == "infoSection" => {    ...,    content[]{..., markDefs[]{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}  }},  }
 export type GetPageQueryResult = {
   _id: string
   _type: 'page'
   name: string
   slug: Slug
-  heading: string
+  seo: Seo | null
+  heading: string | null
   subheading: string | null
   pageBuilder: Array<
+    | {
+        _key: string
+        _type: 'announcementTickerBlock'
+        items: Array<{
+          text: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+          _type: 'announcement'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'availabilityBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        image?: AccessibleImage
+        location: {
+          _id: string
+          _type: 'location'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          address: string
+          shortDescription?: string
+          description?: string
+          hours?: string
+          image: AccessibleImage
+          bookingLink?: Link
+          availabilityLabel?: string
+          availabilityPercent?: number
+          migrationKey?: string
+        } | null
+        percent: number
+        lowLabel?: string
+        highLabel?: string
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        products: null
+      }
     | {
         _key: string
         _type: 'callToAction'
@@ -611,6 +1193,165 @@ export type GetPageQueryResult = {
         }
         theme?: 'dark' | 'light'
         contentAlignment?: 'imageFirst' | 'textFirst'
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'callToActionBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        theme?: 'dark' | 'secondary' | 'surface'
+        image?: AccessibleImage
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'eventsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        selectionMode?: 'manual' | 'upcoming'
+        events:
+          | Array<{
+              _id: string
+              _type: 'event'
+              _createdAt: string
+              _updatedAt: string
+              _rev: string
+              name: string
+              slug: Slug
+              category?: string
+              dateLabel?: string
+              startsAt?: string
+              endsAt?: string
+              description?: string
+              image: AccessibleImage
+              registrationLink?: Link
+              migrationKey?: string
+            }>
+          | Array<{
+              _id: string
+              _type: 'event'
+              _createdAt: string
+              _updatedAt: string
+              _rev: string
+              name: string
+              slug: Slug
+              category?: string
+              dateLabel?: string
+              startsAt?: string
+              endsAt?: string
+              description?: string
+              image: AccessibleImage
+              registrationLink?: Link
+              migrationKey?: string
+            }>
+          | null
+        limit?: number
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'featureGridBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        variant?: 'cards' | 'compactAmenities'
+        features: Array<{
+          icon?: 'cookie' | 'plug' | 'snowflake' | 'sparkles' | 'square' | 'sun' | 'users' | 'wifi'
+          title: string
+          description?: string
+          _type: 'feature'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'heroBlock'
+        variant: 'immersive' | 'standard'
+        eyebrow?: string
+        heading: string
+        accentHeading?: string
+        description?: string
+        image?: AccessibleImage
+        badge?: string
+        primaryCta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        secondaryCta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
       }
     | {
         _key: string
@@ -650,13 +1391,1543 @@ export type GetPageQueryResult = {
               markDefs: null
             }
         > | null
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
       }
-  > | null
+    | {
+        _key: string
+        _type: 'locationsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        variant?: 'alternatingDetails' | 'cards'
+        locations: Array<{
+          _id: string
+          _type: 'location'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          address: string
+          shortDescription?: string
+          description?: string
+          hours?: string
+          image: AccessibleImage
+          bookingLink?: Link
+          availabilityLabel?: string
+          availabilityPercent?: number
+          migrationKey?: string
+        }>
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'mediaFeatureBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        image: AccessibleImage
+        badge?: string
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'menuCatalogBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        categories: Array<{
+          _id: string
+          _type: 'menuCategory'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          description?: string
+          order?: number
+          migrationKey?: string
+          items: Array<{
+            _id: string
+            _type: 'menuItem'
+            _createdAt: string
+            _updatedAt: string
+            _rev: string
+            name: string
+            slug: Slug
+            category: MenuCategoryReference
+            description?: string
+            price?: number
+            priceLabel?: string
+            image?: AccessibleImage
+            status?: 'available' | 'hidden'
+            migrationKey?: string
+          }>
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'menuHighlightsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        items: Array<{
+          _id: string
+          _type: 'menuItem'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          category: string
+          description?: string
+          price?: number
+          priceLabel?: string
+          image?: AccessibleImage
+          status?: 'available' | 'hidden'
+          migrationKey?: string
+        }>
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'postListBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        selectionMode: 'latest' | 'manual'
+        posts: Array<{
+          _id: string
+          status: 'draft' | 'published'
+          title: string
+          slug: string
+          excerpt: string | null
+          coverImage: {
+            asset?: SanityImageAssetReference
+            media?: unknown
+            hotspot?: SanityImageHotspot
+            crop?: SanityImageCrop
+            alt?: string
+            _type: 'image'
+          } | null
+          date: string
+          author: {
+            firstName: string
+            lastName: string
+            picture: {
+              asset?: SanityImageAssetReference
+              media?: unknown
+              hotspot?: SanityImageHotspot
+              crop?: SanityImageCrop
+              alt?: string
+              _type: 'image'
+            }
+          } | null
+        }> | null
+        limit: number
+        layout: 'compactList' | 'editorialGrid'
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'productsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        products: Array<{
+          _id: string
+          _type: 'product'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          description?: string
+          price?: number
+          priceLabel?: string
+          image: AccessibleImage
+          ctaLabel?: string
+          ctaLink: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+          migrationKey?: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+      }
+    | {
+        _key: string
+        _type: 'richTextBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        content?: BlockContent
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'splitStoryBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        theme?: 'secondary' | 'surface'
+        primaryImage?: AccessibleImage
+        secondaryImage?: AccessibleImage
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'timelineBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        milestones: Array<{
+          dateLabel: string
+          title: string
+          body?: string
+          image: AccessibleImage
+          _type: 'milestone'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+  >
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: getHomePageQuery
+// Query: *[_type == "homePage" && _id == "homePage"][0]{    _id,    _type,    name,    seo,    "pageBuilder": pageBuilder[]{  _key,  _type,  ...,  primaryCta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  secondaryCta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  cta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  _type == "announcementTickerBlock" => {    items[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}  },  _type == "menuHighlightsBlock" => {    "items": items[]-> {      ...,      "category": category->name    }  },  locations[]->,  _type == "eventsBlock" => {    "events": select(      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],      events[]->    )  },  _type == "postListBlock" => {    "posts": select(      selectionMode == "manual" => posts[]->{  _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},},      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{  _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},}    )  },  categories[]-> {    ...,    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)  },  location->,  products[]->{..., ctaLink{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}},  _type == "callToAction" => {    ...,    button {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }}  },  _type == "infoSection" => {    ...,    content[]{..., markDefs[]{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}  }}  }
+export type GetHomePageQueryResult = {
+  _id: 'homePage'
+  _type: 'homePage'
+  name: string
+  seo: Seo | null
+  pageBuilder: Array<
+    | {
+        _key: string
+        _type: 'announcementTickerBlock'
+        items: Array<{
+          text: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+          _type: 'announcement'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'availabilityBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        image?: AccessibleImage
+        location: {
+          _id: string
+          _type: 'location'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          address: string
+          shortDescription?: string
+          description?: string
+          hours?: string
+          image: AccessibleImage
+          bookingLink?: Link
+          availabilityLabel?: string
+          availabilityPercent?: number
+          migrationKey?: string
+        } | null
+        percent: number
+        lowLabel?: string
+        highLabel?: string
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'callToAction'
+        eyebrow?: string
+        heading: string
+        body?: BlockContentTextOnly
+        button: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        image?: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          _type: 'image'
+        }
+        theme?: 'dark' | 'light'
+        contentAlignment?: 'imageFirst' | 'textFirst'
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'callToActionBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        theme?: 'dark' | 'secondary' | 'surface'
+        image?: AccessibleImage
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'eventsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        selectionMode?: 'manual' | 'upcoming'
+        events:
+          | Array<{
+              _id: string
+              _type: 'event'
+              _createdAt: string
+              _updatedAt: string
+              _rev: string
+              name: string
+              slug: Slug
+              category?: string
+              dateLabel?: string
+              startsAt?: string
+              endsAt?: string
+              description?: string
+              image: AccessibleImage
+              registrationLink?: Link
+              migrationKey?: string
+            }>
+          | Array<{
+              _id: string
+              _type: 'event'
+              _createdAt: string
+              _updatedAt: string
+              _rev: string
+              name: string
+              slug: Slug
+              category?: string
+              dateLabel?: string
+              startsAt?: string
+              endsAt?: string
+              description?: string
+              image: AccessibleImage
+              registrationLink?: Link
+              migrationKey?: string
+            }>
+          | null
+        limit?: number
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'featureGridBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        variant?: 'cards' | 'compactAmenities'
+        features: Array<{
+          icon?: 'cookie' | 'plug' | 'snowflake' | 'sparkles' | 'square' | 'sun' | 'users' | 'wifi'
+          title: string
+          description?: string
+          _type: 'feature'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'heroBlock'
+        variant: 'immersive' | 'standard'
+        eyebrow?: string
+        heading: string
+        accentHeading?: string
+        description?: string
+        image?: AccessibleImage
+        badge?: string
+        primaryCta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        secondaryCta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'infoSection'
+        heading?: string
+        subheading?: string
+        content: Array<
+          | {
+              children?: Array<{
+                marks?: Array<string>
+                text?: string
+                _type: 'span'
+                _key: string
+              }>
+              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+              listItem?: 'bullet' | 'number'
+              markDefs: Array<{
+                linkType?: 'href' | 'page' | 'post'
+                href?: string
+                page: string | null
+                post: string | null
+                openInNewTab?: boolean
+                _type: 'link'
+                _key: string
+              }> | null
+              level?: number
+              _type: 'block'
+              _key: string
+            }
+          | {
+              asset?: SanityImageAssetReference
+              media?: unknown
+              hotspot?: SanityImageHotspot
+              crop?: SanityImageCrop
+              _type: 'image'
+              _key: string
+              markDefs: null
+            }
+        > | null
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'locationsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        variant?: 'alternatingDetails' | 'cards'
+        locations: Array<{
+          _id: string
+          _type: 'location'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          address: string
+          shortDescription?: string
+          description?: string
+          hours?: string
+          image: AccessibleImage
+          bookingLink?: Link
+          availabilityLabel?: string
+          availabilityPercent?: number
+          migrationKey?: string
+        }>
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'mediaFeatureBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        image: AccessibleImage
+        badge?: string
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'menuCatalogBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        categories: Array<{
+          _id: string
+          _type: 'menuCategory'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          description?: string
+          order?: number
+          migrationKey?: string
+          items: Array<{
+            _id: string
+            _type: 'menuItem'
+            _createdAt: string
+            _updatedAt: string
+            _rev: string
+            name: string
+            slug: Slug
+            category: MenuCategoryReference
+            description?: string
+            price?: number
+            priceLabel?: string
+            image?: AccessibleImage
+            status?: 'available' | 'hidden'
+            migrationKey?: string
+          }>
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'menuHighlightsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        items: Array<{
+          _id: string
+          _type: 'menuItem'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          category: string
+          description?: string
+          price?: number
+          priceLabel?: string
+          image?: AccessibleImage
+          status?: 'available' | 'hidden'
+          migrationKey?: string
+        }>
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'postListBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        selectionMode: 'latest' | 'manual'
+        posts: Array<{
+          _id: string
+          status: 'draft' | 'published'
+          title: string
+          slug: string
+          excerpt: string | null
+          coverImage: {
+            asset?: SanityImageAssetReference
+            media?: unknown
+            hotspot?: SanityImageHotspot
+            crop?: SanityImageCrop
+            alt?: string
+            _type: 'image'
+          } | null
+          date: string
+          author: {
+            firstName: string
+            lastName: string
+            picture: {
+              asset?: SanityImageAssetReference
+              media?: unknown
+              hotspot?: SanityImageHotspot
+              crop?: SanityImageCrop
+              alt?: string
+              _type: 'image'
+            }
+          } | null
+        }> | null
+        limit: number
+        layout: 'compactList' | 'editorialGrid'
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'productsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        products: Array<{
+          _id: string
+          _type: 'product'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          description?: string
+          price?: number
+          priceLabel?: string
+          image: AccessibleImage
+          ctaLabel?: string
+          ctaLink: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+          migrationKey?: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+      }
+    | {
+        _key: string
+        _type: 'richTextBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        content?: BlockContent
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'splitStoryBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        theme?: 'secondary' | 'surface'
+        primaryImage?: AccessibleImage
+        secondaryImage?: AccessibleImage
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'timelineBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        milestones: Array<{
+          dateLabel: string
+          title: string
+          body?: string
+          image: AccessibleImage
+          _type: 'milestone'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+  >
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: getBlogPageQuery
+// Query: *[_type == "blogPage" && _id == "blogPage"][0]{    _id,    _type,    name,    seo,    "pageBuilder": pageBuilder[]{  _key,  _type,  ...,  primaryCta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  secondaryCta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  cta {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }},  _type == "announcementTickerBlock" => {    items[]{..., link{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}  },  _type == "menuHighlightsBlock" => {    "items": items[]-> {      ...,      "category": category->name    }  },  locations[]->,  _type == "eventsBlock" => {    "events": select(      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],      events[]->    )  },  _type == "postListBlock" => {    "posts": select(      selectionMode == "manual" => posts[]->{  _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},},      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{  _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{firstName, lastName, picture},}    )  },  categories[]-> {    ...,    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)  },  location->,  products[]->{..., ctaLink{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}},  _type == "callToAction" => {    ...,    button {  ...,  link {    ...,      _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }  }}  },  _type == "infoSection" => {    ...,    content[]{..., markDefs[]{...,   _type == "link" => {    "page": page->slug.current,    "post": post->slug.current  }}}  }}  }
+export type GetBlogPageQueryResult = {
+  _id: 'blogPage'
+  _type: 'blogPage'
+  name: string
+  seo: Seo | null
+  pageBuilder: Array<
+    | {
+        _key: string
+        _type: 'announcementTickerBlock'
+        items: Array<{
+          text: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+          _type: 'announcement'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'availabilityBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        image?: AccessibleImage
+        location: {
+          _id: string
+          _type: 'location'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          address: string
+          shortDescription?: string
+          description?: string
+          hours?: string
+          image: AccessibleImage
+          bookingLink?: Link
+          availabilityLabel?: string
+          availabilityPercent?: number
+          migrationKey?: string
+        } | null
+        percent: number
+        lowLabel?: string
+        highLabel?: string
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'callToAction'
+        eyebrow?: string
+        heading: string
+        body?: BlockContentTextOnly
+        button: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        image?: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          _type: 'image'
+        }
+        theme?: 'dark' | 'light'
+        contentAlignment?: 'imageFirst' | 'textFirst'
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'callToActionBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        theme?: 'dark' | 'secondary' | 'surface'
+        image?: AccessibleImage
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'eventsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        selectionMode?: 'manual' | 'upcoming'
+        events:
+          | Array<{
+              _id: string
+              _type: 'event'
+              _createdAt: string
+              _updatedAt: string
+              _rev: string
+              name: string
+              slug: Slug
+              category?: string
+              dateLabel?: string
+              startsAt?: string
+              endsAt?: string
+              description?: string
+              image: AccessibleImage
+              registrationLink?: Link
+              migrationKey?: string
+            }>
+          | Array<{
+              _id: string
+              _type: 'event'
+              _createdAt: string
+              _updatedAt: string
+              _rev: string
+              name: string
+              slug: Slug
+              category?: string
+              dateLabel?: string
+              startsAt?: string
+              endsAt?: string
+              description?: string
+              image: AccessibleImage
+              registrationLink?: Link
+              migrationKey?: string
+            }>
+          | null
+        limit?: number
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'featureGridBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        variant?: 'cards' | 'compactAmenities'
+        features: Array<{
+          icon?: 'cookie' | 'plug' | 'snowflake' | 'sparkles' | 'square' | 'sun' | 'users' | 'wifi'
+          title: string
+          description?: string
+          _type: 'feature'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'heroBlock'
+        variant: 'immersive' | 'standard'
+        eyebrow?: string
+        heading: string
+        accentHeading?: string
+        description?: string
+        image?: AccessibleImage
+        badge?: string
+        primaryCta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        secondaryCta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'infoSection'
+        heading?: string
+        subheading?: string
+        content: Array<
+          | {
+              children?: Array<{
+                marks?: Array<string>
+                text?: string
+                _type: 'span'
+                _key: string
+              }>
+              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+              listItem?: 'bullet' | 'number'
+              markDefs: Array<{
+                linkType?: 'href' | 'page' | 'post'
+                href?: string
+                page: string | null
+                post: string | null
+                openInNewTab?: boolean
+                _type: 'link'
+                _key: string
+              }> | null
+              level?: number
+              _type: 'block'
+              _key: string
+            }
+          | {
+              asset?: SanityImageAssetReference
+              media?: unknown
+              hotspot?: SanityImageHotspot
+              crop?: SanityImageCrop
+              _type: 'image'
+              _key: string
+              markDefs: null
+            }
+        > | null
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'locationsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        variant?: 'alternatingDetails' | 'cards'
+        locations: Array<{
+          _id: string
+          _type: 'location'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          address: string
+          shortDescription?: string
+          description?: string
+          hours?: string
+          image: AccessibleImage
+          bookingLink?: Link
+          availabilityLabel?: string
+          availabilityPercent?: number
+          migrationKey?: string
+        }>
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'mediaFeatureBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        image: AccessibleImage
+        badge?: string
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'menuCatalogBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        categories: Array<{
+          _id: string
+          _type: 'menuCategory'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          description?: string
+          order?: number
+          migrationKey?: string
+          items: Array<{
+            _id: string
+            _type: 'menuItem'
+            _createdAt: string
+            _updatedAt: string
+            _rev: string
+            name: string
+            slug: Slug
+            category: MenuCategoryReference
+            description?: string
+            price?: number
+            priceLabel?: string
+            image?: AccessibleImage
+            status?: 'available' | 'hidden'
+            migrationKey?: string
+          }>
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'menuHighlightsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        items: Array<{
+          _id: string
+          _type: 'menuItem'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          category: string
+          description?: string
+          price?: number
+          priceLabel?: string
+          image?: AccessibleImage
+          status?: 'available' | 'hidden'
+          migrationKey?: string
+        }>
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'postListBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        selectionMode: 'latest' | 'manual'
+        posts: Array<{
+          _id: string
+          status: 'draft' | 'published'
+          title: string
+          slug: string
+          excerpt: string | null
+          coverImage: {
+            asset?: SanityImageAssetReference
+            media?: unknown
+            hotspot?: SanityImageHotspot
+            crop?: SanityImageCrop
+            alt?: string
+            _type: 'image'
+          } | null
+          date: string
+          author: {
+            firstName: string
+            lastName: string
+            picture: {
+              asset?: SanityImageAssetReference
+              media?: unknown
+              hotspot?: SanityImageHotspot
+              crop?: SanityImageCrop
+              alt?: string
+              _type: 'image'
+            }
+          } | null
+        }> | null
+        limit: number
+        layout: 'compactList' | 'editorialGrid'
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'productsBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        products: Array<{
+          _id: string
+          _type: 'product'
+          _createdAt: string
+          _updatedAt: string
+          _rev: string
+          name: string
+          slug: Slug
+          label?: string
+          description?: string
+          price?: number
+          priceLabel?: string
+          image: AccessibleImage
+          ctaLabel?: string
+          ctaLink: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+          migrationKey?: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+      }
+    | {
+        _key: string
+        _type: 'richTextBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        content?: BlockContent
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'splitStoryBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        theme?: 'secondary' | 'surface'
+        primaryImage?: AccessibleImage
+        secondaryImage?: AccessibleImage
+        cta: {
+          _type: 'button'
+          buttonText?: string
+          link: {
+            _type: 'link'
+            linkType?: 'href' | 'page' | 'post'
+            href?: string
+            page: string | null
+            post: string | null
+            openInNewTab?: boolean
+          } | null
+        } | null
+        primaryCta: null
+        secondaryCta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+    | {
+        _key: string
+        _type: 'timelineBlock'
+        eyebrow?: string
+        heading?: string
+        intro?: string
+        milestones: Array<{
+          dateLabel: string
+          title: string
+          body?: string
+          image: AccessibleImage
+          _type: 'milestone'
+          _key: string
+        }>
+        primaryCta: null
+        secondaryCta: null
+        cta: null
+        locations: null
+        categories: null
+        location: null
+        products: null
+      }
+  >
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: pageMetadataQuery
+// Query: *[_type == "page" && slug.current == $slug][0]{name, seo}
+export type PageMetadataQueryResult = {
+  name: string
+  seo: Seo | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: homeMetadataQuery
+// Query: *[_type == "homePage" && _id == "homePage"][0]{name, seo}
+export type HomeMetadataQueryResult = {
+  name: string
+  seo: Seo | null
+} | null
+
+// Source: sanity/lib/queries.ts
+// Variable: blogMetadataQuery
+// Query: *[_type == "blogPage" && _id == "blogPage"][0]{name, seo}
+export type BlogMetadataQueryResult = {
+  name: string
+  seo: Seo | null
 } | null
 
 // Source: sanity/lib/queries.ts
 // Variable: sitemapData
-// Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
+// Query: *[(_type == "page" || _type == "post") && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
 export type SitemapDataResult = Array<
   | {
       slug: string
@@ -817,9 +3088,14 @@ export type PagesSlugsResult = Array<{
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == "settings"][0]': SettingsQueryResult
-    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n      }\n\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n          }\n        }\n      },\n    },\n  }\n': GetPageQueryResult
-    '\n  *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
+    '\n  *[_type == "settings" && _id == "siteSettings"][0]{\n    ...,\n    navigation[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n    headerCta{\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n    footerGroups[]{..., links[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}},\n    footerLocations[]->{_id, name, address, slug}\n  }\n': SettingsQueryResult
+    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    seo,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n  _key,\n  _type,\n  ...,\n  primaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  secondaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  cta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  _type == "announcementTickerBlock" => {\n    items[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  },\n  _type == "menuHighlightsBlock" => {\n    "items": items[]-> {\n      ...,\n      "category": category->name\n    }\n  },\n  locations[]->,\n  _type == "eventsBlock" => {\n    "events": select(\n      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],\n      events[]->\n    )\n  },\n  _type == "postListBlock" => {\n    "posts": select(\n      selectionMode == "manual" => posts[]->{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n},\n      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n}\n    )\n  },\n  categories[]-> {\n    ...,\n    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)\n  },\n  location->,\n  products[]->{..., ctaLink{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n  _type == "callToAction" => {\n    ...,\n    button {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n}\n  },\n  _type == "infoSection" => {\n    ...,\n    content[]{..., markDefs[]{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  }\n},\n  }\n': GetPageQueryResult
+    '\n  *[_type == "homePage" && _id == "homePage"][0]{\n    _id,\n    _type,\n    name,\n    seo,\n    "pageBuilder": pageBuilder[]{\n  _key,\n  _type,\n  ...,\n  primaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  secondaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  cta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  _type == "announcementTickerBlock" => {\n    items[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  },\n  _type == "menuHighlightsBlock" => {\n    "items": items[]-> {\n      ...,\n      "category": category->name\n    }\n  },\n  locations[]->,\n  _type == "eventsBlock" => {\n    "events": select(\n      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],\n      events[]->\n    )\n  },\n  _type == "postListBlock" => {\n    "posts": select(\n      selectionMode == "manual" => posts[]->{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n},\n      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n}\n    )\n  },\n  categories[]-> {\n    ...,\n    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)\n  },\n  location->,\n  products[]->{..., ctaLink{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n  _type == "callToAction" => {\n    ...,\n    button {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n}\n  },\n  _type == "infoSection" => {\n    ...,\n    content[]{..., markDefs[]{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  }\n}\n  }\n': GetHomePageQueryResult
+    '\n  *[_type == "blogPage" && _id == "blogPage"][0]{\n    _id,\n    _type,\n    name,\n    seo,\n    "pageBuilder": pageBuilder[]{\n  _key,\n  _type,\n  ...,\n  primaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  secondaryCta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  cta {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n},\n  _type == "announcementTickerBlock" => {\n    items[]{..., link{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  },\n  _type == "menuHighlightsBlock" => {\n    "items": items[]-> {\n      ...,\n      "category": category->name\n    }\n  },\n  locations[]->,\n  _type == "eventsBlock" => {\n    "events": select(\n      selectionMode == "upcoming" => *[_type == "event" && (!defined(startsAt) || startsAt >= now())] | order(startsAt asc)[0...12],\n      events[]->\n    )\n  },\n  _type == "postListBlock" => {\n    "posts": select(\n      selectionMode == "manual" => posts[]->{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n},\n      *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc)[0...12]{\n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n}\n    )\n  },\n  categories[]-> {\n    ...,\n    "items": *[_type == "menuItem" && category._ref == ^._id && status != "hidden"] | order(name asc)\n  },\n  location->,\n  products[]->{..., ctaLink{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}},\n  _type == "callToAction" => {\n    ...,\n    button {\n  ...,\n  link {\n    ...,\n    \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n  }\n}\n  },\n  _type == "infoSection" => {\n    ...,\n    content[]{..., markDefs[]{..., \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n}}\n  }\n}\n  }\n': GetBlogPageQueryResult
+    '\n  *[_type == "page" && slug.current == $slug][0]{name, seo}\n': PageMetadataQueryResult
+    '\n  *[_type == "homePage" && _id == "homePage"][0]{name, seo}\n': HomeMetadataQueryResult
+    '\n  *[_type == "blogPage" && _id == "blogPage"][0]{name, seo}\n': BlogMetadataQueryResult
+    '\n  *[(_type == "page" || _type == "post") && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
     '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': AllPostsQueryResult
     '\n  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': MorePostsQueryResult
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult

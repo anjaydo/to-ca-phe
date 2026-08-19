@@ -156,6 +156,62 @@ export const settings = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'brandName',
+      title: 'Brand name',
+      type: 'string',
+      initialValue: 'Tổ Cà Phê',
+    }),
+    defineField({
+      name: 'logoText',
+      title: 'Logo mark text',
+      type: 'string',
+      initialValue: 'Tổ',
+      validation: (rule) => rule.max(8),
+    }),
+    defineField({
+      name: 'navigation',
+      title: 'Main navigation',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'navigationItem',
+          fields: [
+            defineField({name: 'label', type: 'string', validation: (rule) => rule.required()}),
+            defineField({name: 'link', type: 'link', validation: (rule) => rule.required()}),
+          ],
+          preview: {select: {title: 'label'}},
+        }),
+      ],
+    }),
+    defineField({name: 'headerStatus', title: 'Header status badge', type: 'string'}),
+    defineField({name: 'headerCta', title: 'Header call to action', type: 'button'}),
+    defineField({name: 'footerIntro', title: 'Footer introduction', type: 'text', rows: 3}),
+    defineField({
+      name: 'footerGroups',
+      title: 'Footer link groups',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'footerGroup',
+          fields: [
+            defineField({name: 'title', type: 'string', validation: (rule) => rule.required()}),
+            defineField({
+              name: 'links',
+              type: 'array',
+              of: [defineArrayMember({type: 'object', name: 'footerLink', fields: [defineField({name: 'label', type: 'string', validation: (rule) => rule.required()}), defineField({name: 'link', type: 'link', validation: (rule) => rule.required()})], preview: {select: {title: 'label'}}})],
+            }),
+          ],
+          preview: {select: {title: 'title'}},
+        }),
+      ],
+    }),
+    defineField({name: 'footerLocations', title: 'Footer locations', type: 'array', of: [defineArrayMember({type: 'reference', to: [{type: 'location'}]})]}),
+    defineField({name: 'contactEmail', title: 'Contact email', type: 'string', validation: (rule) => rule.email()}),
+    defineField({name: 'copyright', type: 'string'}),
+    defineField({name: 'defaultSeo', title: 'Default SEO', type: 'seo'}),
   ],
   preview: {
     prepare() {

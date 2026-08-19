@@ -18,7 +18,7 @@ export const link = defineType({
       name: 'linkType',
       title: 'Link Type',
       type: 'string',
-      initialValue: 'url',
+      initialValue: 'href',
       options: {
         list: [
           {title: 'URL', value: 'href'},
@@ -35,7 +35,7 @@ export const link = defineType({
       hidden: ({parent}) => parent?.linkType !== 'href',
       validation: (Rule) =>
         // Custom validation to ensure URL is provided if the link type is 'href'
-        Rule.custom((value, context) => {
+        Rule.uri({allowRelative: true, scheme: ['http', 'https', 'mailto', 'tel']}).custom((value, context) => {
           const parent = context.parent as Link
           if (parent?.linkType === 'href' && !value) {
             return 'URL is required when Link Type is URL'

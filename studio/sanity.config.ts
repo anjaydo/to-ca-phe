@@ -66,19 +66,25 @@ export default defineConfig({
         mainDocuments: defineDocuments([
           {
             route: '/',
-            filter: `_type == "settings" && _id == "siteSettings"`,
+            filter: `_type == "homePage" && _id == "homePage"`,
+          },
+          {
+            route: '/posts',
+            filter: `_type == "blogPage" && _id == "blogPage"`,
           },
           {
             route: '/:slug',
-            filter: `_type == "page" && slug.current == $slug || _id == $slug`,
+            filter: `_type == "page" && (slug.current == $slug || _id == $slug)`,
           },
           {
             route: '/posts/:slug',
-            filter: `_type == "post" && slug.current == $slug || _id == $slug`,
+            filter: `_type == "post" && (slug.current == $slug || _id == $slug)`,
           },
         ]),
         // Locations Resolver API allows you to define where data is being used in your application. https://www.sanity.io/docs/visual-editing/presentation-resolver-api#8d8bca7bfcd7
         locations: {
+          homePage: defineLocations({locations: [homeLocation]}),
+          blogPage: defineLocations({locations: [{title: 'Blog', href: '/posts'}]}),
           settings: defineLocations({
             locations: [homeLocation],
             message: 'This document is used on all pages',
@@ -110,12 +116,23 @@ export default defineConfig({
                   href: resolveHref('post', doc?.slug)!,
                 },
                 {
-                  title: 'Home',
-                  href: '/',
+                  title: 'Blog',
+                  href: '/posts',
                 } satisfies DocumentLocation,
               ].filter(Boolean) as DocumentLocation[],
             }),
           }),
+          location: defineLocations({
+            select: {title: 'name', slug: 'slug.current'},
+            resolve: (doc) => ({locations: [{title: doc?.title || 'Location', href: '/spaces'}, homeLocation]}),
+          }),
+          menuItem: defineLocations({
+            select: {title: 'name'},
+            resolve: (doc) => ({locations: [{title: doc?.title || 'Menu item', href: '/menu'}, homeLocation]}),
+          }),
+          menuCategory: defineLocations({locations: [{title: 'Menu', href: '/menu'}]}),
+          event: defineLocations({locations: [homeLocation]}),
+          product: defineLocations({locations: [{title: 'Merchandise', href: '/merchandise'}]}),
         },
       },
     }),

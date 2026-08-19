@@ -13,6 +13,10 @@
     "predev": "npm run sanity:typegen",
     "dev": "sanity dev",
     "sanity:typegen": "sanity schema extract --enforce-required-fields --path ../sanity.schema.json && sanity typegen generate",
+    "seed:composable:dry": "sanity exec scripts/seedComposablePages.mjs --with-user-token -- --dry-run",
+    "seed:composable": "sanity exec scripts/seedComposablePages.mjs --with-user-token",
+    "seed:blog:dry": "sanity exec scripts/seedBlogContent.mjs --with-user-token -- --dry-run",
+    "seed:blog": "sanity exec scripts/seedBlogContent.mjs --with-user-token",
     "start": "sanity start",
     "type-check": "tsc --noEmit"
   },

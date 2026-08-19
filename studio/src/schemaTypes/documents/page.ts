@@ -23,40 +23,40 @@ export const page = defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      validation: (Rule) => Rule.required(),
       options: {
         source: 'name',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required().custom((value) => {
+        const slug = value?.current
+        return slug && ['api', 'posts', 'patterns'].includes(slug)
+          ? 'This slug is reserved by the application.'
+          : true
+      }),
     }),
+    defineField({name: 'seo', title: 'SEO', type: 'seo'}),
     defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      deprecated: {reason: 'Use a Hero block in Page builder instead.'},
+      readOnly: true,
+      hidden: ({value}) => value === undefined,
     }),
     defineField({
       name: 'subheading',
       title: 'Subheading',
       type: 'string',
+      deprecated: {reason: 'Use a Hero block in Page builder instead.'},
+      readOnly: true,
+      hidden: ({value}) => value === undefined,
     }),
     defineField({
       name: 'pageBuilder',
       title: 'Page builder',
-      type: 'array',
-      of: [{type: 'callToAction'}, {type: 'infoSection'}],
-      options: {
-        insertMenu: {
-          // Configure the "Add Item" menu to display a thumbnail preview of the content type. https://www.sanity.io/docs/studio/array-type#efb1fe03459d
-          views: [
-            {
-              name: 'grid',
-              previewImageUrl: (schemaTypeName) =>
-                `/static/page-builder-thumbnails/${schemaTypeName}.webp`,
-            },
-          ],
-        },
-      },
+      type: 'pageBuilder',
+      validation: (rule) => rule.required().min(1),
     }),
+    defineField({name: 'migrationKey', type: 'string', readOnly: true, hidden: ({value}) => !value}),
   ],
 })

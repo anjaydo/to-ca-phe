@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Tổ Cà Phê page section preview">
+  <rect width="640" height="360" fill="#f3efe6"/>
+  <rect x="28" y="28" width="584" height="304" rx="18" fill="#fffdf8" stroke="#123d24" stroke-width="3"/>
+  <rect x="62" y="68" width="196" height="18" rx="9" fill="#d5e7ad"/>
+  <rect x="62" y="106" width="320" height="30" rx="8" fill="#123d24"/>
+  <rect x="62" y="150" width="252" height="12" rx="6" fill="#78907f"/>
+  <rect x="62" y="174" width="220" height="12" rx="6" fill="#78907f"/>
+  <rect x="62" y="222" width="126" height="42" rx="14" fill="#e8bb50"/>
+  <rect x="420" y="68" width="154" height="196" rx="14" fill="#d5e7ad"/>
+  <circle cx="497" cy="166" r="42" fill="#123d24" opacity=".88"/>
+  <text x="62" y="304" fill="#123d24" font-family="Arial, sans-serif" font-size="18" font-weight="700">TỔ PAGE BLOCK</text>
+</svg>
